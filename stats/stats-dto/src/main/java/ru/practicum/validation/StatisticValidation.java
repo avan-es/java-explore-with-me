@@ -30,7 +30,7 @@ public class StatisticValidation {
         return true;
     }
 
-    public void statisticDtoIsValid(StatisticPostDto statisticPostDto){
+    public void statisticDtoIsValid(StatisticPostDto statisticPostDto) {
         ipIsValid(statisticPostDto.getIp());
         dateIsValid(statisticPostDto.getTimestamp());
     }
