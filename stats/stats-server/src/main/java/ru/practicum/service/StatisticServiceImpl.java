@@ -31,7 +31,7 @@ public class StatisticServiceImpl implements StatisticService {
         } else if (uris == null && isUnique) {
             return statisticRepository.getUrisViewsUnique(stringToLocalDate(params.get("start")),
                     stringToLocalDate(params.get("end")));
-        } else if (uris.size() == 0 && !isUnique) {
+        } else if (uris.size() > 0 && !isUnique) {
             return statisticRepository.getUrisViewsFromSet(uris, stringToLocalDate(params.get("start")),
                     stringToLocalDate(params.get("end")));
         } else {
