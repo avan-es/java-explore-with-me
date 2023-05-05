@@ -8,7 +8,6 @@ import ru.practicum.model.Statistic;
 
 import java.time.LocalDateTime;
 import java.util.List;
-import java.util.Set;
 
 @Component("dbStatisticRepository")
 public interface StatisticRepository  extends JpaRepository<Statistic, Long> {
