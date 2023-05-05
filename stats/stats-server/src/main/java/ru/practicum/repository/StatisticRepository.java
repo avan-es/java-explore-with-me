@@ -21,14 +21,14 @@ public interface StatisticRepository  extends JpaRepository<Statistic, Long> {
             "ORDER BY hits DESC ", nativeQuery = true)
     List<StatisticGetDto> getUrisViews(LocalDateTime start, LocalDateTime end);
 
-    //Просмотры конкретного uri (не уникальные)
+    //Просмотры конкретных uri (не уникальные)
     @Query(value = "SELECT s.uri, s.app, COUNT(*) AS hits " +
             "FROM statistic AS s " +
             "WHERE s.uri IN ?1 " +
             "AND s.view_date BETWEEN ?2 AND ?3 " +
             "GROUP BY s.uri, s.app " +
             "ORDER BY hits DESC ", nativeQuery = true)
-    List<StatisticGetDto> getUriViews(Set<String> uris, LocalDateTime start, LocalDateTime end);
+    List<StatisticGetDto> getUrisViewsFromSet(Set<String> uris, LocalDateTime start, LocalDateTime end);
 
     //Просмотры всех uri (уникальные)
     @Query(value = "SELECT s.uri, s.app, COUNT(DISTINCT s.ip) AS hits " +
@@ -38,14 +38,13 @@ public interface StatisticRepository  extends JpaRepository<Statistic, Long> {
             "ORDER BY hits DESC ", nativeQuery = true)
     List<StatisticGetDto> getUrisViewsUnique(LocalDateTime start, LocalDateTime end);
 
-    //Просмотры конкретного uri (уникальные)
+    //Просмотры конкретных uri (уникальные)
     @Query(value = "SELECT s.uri, s.app, COUNT(DISTINCT s.ip) AS hits " +
             "FROM statistic AS s " +
             "WHERE s.uri IN ?1 " +
             "AND s.view_date BETWEEN ?2 AND ?3 " +
             "GROUP BY s.uri, s.app " +
             "ORDER BY hits DESC ", nativeQuery = true)
-    List<StatisticGetDto> getUriViewsUnique(Set<String> uris, LocalDateTime start, LocalDateTime end);
-
+    List<StatisticGetDto> getUrisViewsFromSetUnique(Set<String> uris, LocalDateTime start, LocalDateTime end);
 
 }
