@@ -25,23 +25,23 @@ public class StatisticServiceImpl implements StatisticService {
         if (params.containsKey("unique")) {
             isUnique = Boolean.parseBoolean(params.get("unique"));
         }
-        if (uris == null) {
-            if (isUnique) {
-                return statisticRepository.getUrisViewsUnique(stringToLocalDate(params.get("start")),
-                    stringToLocalDate(params.get("end")));
-            } else {
-                return statisticRepository.getUrisViews(stringToLocalDate(params.get("start")),
-                    stringToLocalDate(params.get("end")));
+        List<StatisticGetDto> result = new ArrayList<>();
+        if (uris == null && !isUnique) {
+            result = statisticRepository.getUrisViews(stringToLocalDate(params.get("start")), stringToLocalDate(params.get("end")));
+        } else if (uris == null && isUnique) {
+            result = statisticRepository.getUrisViewsUnique(stringToLocalDate(params.get("start")), stringToLocalDate(params.get("end")));
+        } else if (uris != null && !isUnique) {
+            for (String uri: uris) {
+                result.add(statisticRepository.getUriViews(uri, stringToLocalDate(params.get("start")), stringToLocalDate(params.get("end"))));
             }
+            result.sort(Comparator.comparing(StatisticGetDto::getHits).reversed());
         } else {
-            if (isUnique) {
-                return statisticRepository.getUriViewsUnique(uris, stringToLocalDate(params.get("start")),
-                    stringToLocalDate(params.get("end")));
-            } else {
-                return statisticRepository.getUriViews(uris, stringToLocalDate(params.get("start")),
-                    stringToLocalDate(params.get("end")));
+            for (String uri: uris) {
+                result.add(statisticRepository.getUriViewsUnique(uri, stringToLocalDate(params.get("start")), stringToLocalDate(params.get("end"))));
             }
+            result.sort(Comparator.comparing(StatisticGetDto::getHits).reversed());
         }
+        return result;
 //        if (uris == null && !isUnique) {
 //            return statisticRepository.getUrisViews(stringToLocalDate(params.get("start")),
 //                    stringToLocalDate(params.get("end")));
