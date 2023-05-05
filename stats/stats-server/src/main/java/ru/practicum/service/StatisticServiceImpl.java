@@ -22,13 +22,13 @@ public class StatisticServiceImpl implements StatisticService {
     @Override
     public List<StatisticGetDto> getStatistic(String path, Map<String, String> params, Set<String> uris) {
         boolean isUnique = Boolean.parseBoolean(params.get("unique"));
-        if (uris == null && !isUnique) {
+        if (uris.isEmpty() && !isUnique) {
             return statisticRepository.getUrisViews(stringToLocalDate(params.get("start")),
                     stringToLocalDate(params.get("end")));
-        } else if (uris == null && isUnique) {
+        } else if (uris.isEmpty() && isUnique) {
             return statisticRepository.getUrisViewsUnique(stringToLocalDate(params.get("start")),
                     stringToLocalDate(params.get("end")));
-        } else if (uris != null && !isUnique) {
+        } else if (!uris.isEmpty() && !isUnique) {
             return statisticRepository.getUriViews(uris, stringToLocalDate(params.get("start")),
                     stringToLocalDate(params.get("end")));
         } else {
