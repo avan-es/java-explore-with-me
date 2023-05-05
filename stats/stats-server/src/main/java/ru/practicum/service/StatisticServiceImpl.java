@@ -25,7 +25,7 @@ public class StatisticServiceImpl implements StatisticService {
         if (params.containsKey("unique")) {
             isUnique = Boolean.parseBoolean(params.get("unique"));
         }
-        List<StatisticGetDto> result = new ArrayList<>();
+/*        List<StatisticGetDto> result = new ArrayList<>();
         if (uris == null && !isUnique) {
             result = statisticRepository.getUrisViews(stringToLocalDate(params.get("start")), stringToLocalDate(params.get("end")));
         } else if (uris == null && isUnique) {
@@ -41,20 +41,20 @@ public class StatisticServiceImpl implements StatisticService {
             }
             result.sort(Comparator.comparing(StatisticGetDto::getHits).reversed());
         }
-        return result;
-//        if (uris == null && !isUnique) {
-//            return statisticRepository.getUrisViews(stringToLocalDate(params.get("start")),
-//                    stringToLocalDate(params.get("end")));
-//        } else if (uris == null && isUnique) {
-//            return statisticRepository.getUrisViewsUnique(stringToLocalDate(params.get("start")),
-//                    stringToLocalDate(params.get("end")));
-//        } else if (!uris.isEmpty() && !isUnique) {
-//            return statisticRepository.getUriViews(uris, stringToLocalDate(params.get("start")),
-//                    stringToLocalDate(params.get("end")));
-//        } else {
-//            return statisticRepository.getUriViewsUnique(uris, stringToLocalDate(params.get("start")),
-//                    stringToLocalDate(params.get("end")));
-//        }
+        return result;*/
+        if (uris == null && !isUnique) {
+            return statisticRepository.getUrisViews(stringToLocalDate(params.get("start")),
+                    stringToLocalDate(params.get("end")));
+        } else if (uris == null && isUnique) {
+            return statisticRepository.getUrisViewsUnique(stringToLocalDate(params.get("start")),
+                    stringToLocalDate(params.get("end")));
+        } else if (!uris.isEmpty() && !isUnique) {
+            return statisticRepository.getUriViews(uris, stringToLocalDate(params.get("start")),
+                    stringToLocalDate(params.get("end")));
+        } else {
+            return statisticRepository.getUriViewsUnique(uris, stringToLocalDate(params.get("start")),
+                    stringToLocalDate(params.get("end")));
+        }
     }
 
     @Override
