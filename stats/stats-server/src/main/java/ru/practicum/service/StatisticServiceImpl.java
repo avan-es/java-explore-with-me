@@ -25,20 +25,22 @@ public class StatisticServiceImpl implements StatisticService {
         if (params.containsKey("unique")) {
             isUnique = Boolean.parseBoolean(params.get("unique"));
         }
-        if (uris == null && !isUnique) {
-            return statisticRepository.getUrisViews(stringToLocalDate(params.get("start")),
+        if (uris == null) {
+            if (isUnique) {
+                return statisticRepository.getUrisViewsUnique(stringToLocalDate(params.get("start")),
                     stringToLocalDate(params.get("end")));
-        } else if (uris == null && isUnique) {
-            return statisticRepository.getUrisViewsUnique(stringToLocalDate(params.get("start")),
+            } else {
+                return statisticRepository.getUrisViews(stringToLocalDate(params.get("start")),
                     stringToLocalDate(params.get("end")));
-        }
-
-        if (!isUnique) {
-            return statisticRepository.getUriViews(uris, stringToLocalDate(params.get("start")),
-                    stringToLocalDate(params.get("end")));
+            }
         } else {
-            return statisticRepository.getUriViewsUnique(uris, stringToLocalDate(params.get("start")),
+            if (isUnique) {
+                return statisticRepository.getUriViewsUnique(uris, stringToLocalDate(params.get("start")),
                     stringToLocalDate(params.get("end")));
+            } else {
+                return statisticRepository.getUriViews(uris, stringToLocalDate(params.get("start")),
+                    stringToLocalDate(params.get("end")));
+            }
         }
 //        if (uris == null && !isUnique) {
 //            return statisticRepository.getUrisViews(stringToLocalDate(params.get("start")),
