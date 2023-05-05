@@ -31,13 +31,28 @@ public class StatisticServiceImpl implements StatisticService {
         } else if (uris == null && isUnique) {
             return statisticRepository.getUrisViewsUnique(stringToLocalDate(params.get("start")),
                     stringToLocalDate(params.get("end")));
-        } else if (!uris.isEmpty() && !isUnique) {
+        }
+
+        if (!isUnique) {
             return statisticRepository.getUriViews(uris, stringToLocalDate(params.get("start")),
                     stringToLocalDate(params.get("end")));
         } else {
             return statisticRepository.getUriViewsUnique(uris, stringToLocalDate(params.get("start")),
                     stringToLocalDate(params.get("end")));
         }
+//        if (uris == null && !isUnique) {
+//            return statisticRepository.getUrisViews(stringToLocalDate(params.get("start")),
+//                    stringToLocalDate(params.get("end")));
+//        } else if (uris == null && isUnique) {
+//            return statisticRepository.getUrisViewsUnique(stringToLocalDate(params.get("start")),
+//                    stringToLocalDate(params.get("end")));
+//        } else if (!uris.isEmpty() && !isUnique) {
+//            return statisticRepository.getUriViews(uris, stringToLocalDate(params.get("start")),
+//                    stringToLocalDate(params.get("end")));
+//        } else {
+//            return statisticRepository.getUriViewsUnique(uris, stringToLocalDate(params.get("start")),
+//                    stringToLocalDate(params.get("end")));
+//        }
     }
 
     @Override
