@@ -21,11 +21,26 @@ public class StatisticServiceImpl implements StatisticService {
 
     @Override
     public List<StatisticGetDto> getStatistic(String path, Map<String, String> params, Set<String> uris) {
-        boolean isUnique = false;
-        if (params.containsKey("unique")) {
-            isUnique = Boolean.parseBoolean(params.get("unique"));
+//        boolean isUnique = false;
+//        if (params.containsKey("unique")) {
+//            isUnique = Boolean.parseBoolean(params.get("unique"));
+//        }
+        boolean isUnique = params.containsKey("unique") ? Boolean.parseBoolean(params.get("unique")) : false;
+        uris = uris == null ? new HashSet<>() : uris;
+        if (uris.size() > 0 && !isUnique) {
+            return statisticRepository.getUrisViewsFromSet(uris, stringToLocalDate(params.get("start")),
+                    stringToLocalDate(params.get("end")));
+        } else if (uris.size() > 0 && isUnique) {
+            return statisticRepository.getUrisViewsFromSetUnique(uris, stringToLocalDate(params.get("start")),
+                    stringToLocalDate(params.get("end")));
+        } else if (isUnique) {
+            return statisticRepository.getUrisViewsUnique(stringToLocalDate(params.get("start")),
+                    stringToLocalDate(params.get("end")));
+        } else {
+            return statisticRepository.getUrisViews(stringToLocalDate(params.get("start")),
+                    stringToLocalDate(params.get("end")));
         }
-        if (uris == null && !isUnique) {
+        /*if (uris == null && !isUnique) {
             return statisticRepository.getUrisViews(stringToLocalDate(params.get("start")),
                     stringToLocalDate(params.get("end")));
         } else if (uris == null && isUnique) {
@@ -40,7 +55,7 @@ public class StatisticServiceImpl implements StatisticService {
         } else {
             return statisticRepository.getUrisViews(stringToLocalDate(params.get("start")),
                     stringToLocalDate(params.get("end")));
-        }
+        }*/
     }
 
     @Override
