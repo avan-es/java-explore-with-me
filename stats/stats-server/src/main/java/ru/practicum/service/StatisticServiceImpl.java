@@ -3,7 +3,7 @@ package ru.practicum.service;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
-import ru.practicum.dto.StatisticGetDto;
+import ru.practicum.dto.StatisticGetProjection;
 import ru.practicum.dto.StatisticPostDto;
 import ru.practicum.model.StatisticMapper;
 import ru.practicum.repository.StatisticRepository;
@@ -20,7 +20,7 @@ public class StatisticServiceImpl implements StatisticService {
     private final StatisticRepository statisticRepository;
 
     @Override
-    public List<StatisticGetDto> getStatistic(String path, Map<String, String> params, Set<String> uris) {
+    public List<StatisticGetProjection> getStatistic(String path, Map<String, String> params, Set<String> uris) {
         boolean isUnique = params.containsKey("unique") ? Boolean.parseBoolean(params.get("unique")) : false;
         uris = uris == null ? new HashSet<>() : uris;
         if (uris.size() > 0 && !isUnique) {

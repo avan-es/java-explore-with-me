@@ -3,7 +3,7 @@ package ru.practicum.controller;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
-import ru.practicum.dto.StatisticGetDto;
+import ru.practicum.dto.StatisticGetProjection;
 import ru.practicum.dto.StatisticPostDto;
 import ru.practicum.exception.BadRequest;
 import ru.practicum.service.StatisticService;
@@ -31,7 +31,7 @@ public class StatisticController {
     }
 
     @GetMapping("/stats")
-    public List<StatisticGetDto> getStatistic(
+    public List<StatisticGetProjection> getStatistic(
             @RequestParam Map<String, String> params,
             @RequestParam(value = "uris", required = false) Set<String> uris) {
         if (!params.containsKey("start") || !params.containsKey("end")) {

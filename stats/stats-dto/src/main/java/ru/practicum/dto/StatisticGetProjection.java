@@ -1,6 +1,6 @@
 package ru.practicum.dto;
 
-public interface StatisticGetDto {
+public interface StatisticGetProjection {
 
      String getApp();
 
