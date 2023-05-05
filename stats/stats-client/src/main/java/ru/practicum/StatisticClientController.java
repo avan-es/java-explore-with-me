@@ -9,7 +9,6 @@ import ru.practicum.dto.StatisticPostDto;
 import ru.practicum.exception.BadRequest;
 import ru.practicum.validation.StatisticValidation;
 
-import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
