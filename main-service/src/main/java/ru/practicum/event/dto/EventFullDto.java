@@ -1,11 +1,8 @@
 package ru.practicum.event.dto;
 
-import org.springframework.boot.context.properties.bind.DefaultValue;
 import ru.practicum.category.dto.CategoryDto;
-import ru.practicum.location.Location;
+import ru.practicum.location.LocationDto;
 import ru.practicum.users.dto.UserShortDto;
-
-import java.time.LocalDateTime;
 
 public class EventFullDto {
     //Краткое описание
@@ -25,7 +22,7 @@ public class EventFullDto {
     //Пользователь (краткая информация)
     private UserShortDto initiator;
     //Широта и долгота места проведения события
-    private Location location;
+    private LocationDto location;
     //Нужно ли оплачивать участие
     private Boolean paid;
     //Ограничение на количество участников. Значение 0 - означает отсутствие ограничения
