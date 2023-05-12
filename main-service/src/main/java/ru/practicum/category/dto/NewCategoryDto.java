@@ -1,10 +1,15 @@
 package ru.practicum.category.dto;
 
-import javax.validation.constraints.NotBlank;
+import lombok.Builder;
+import lombok.Data;
 
-//Данные для добавления новой категории
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
+
+@Data
 public class NewCategoryDto {
-    //Название категории
+
     @NotBlank
     private String name;
 }
