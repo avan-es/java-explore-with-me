@@ -25,6 +25,9 @@ import ru.practicum.event.model.Event;
 import ru.practicum.event.model.EventMapper;
 import ru.practicum.event.repository.EventRepository;
 
+import ru.practicum.request.dto.ParticipationRequestDto;
+import ru.practicum.request.model.Request;
+import ru.practicum.request.model.RequestMapper;
 import ru.practicum.request.repository.RequestRepository;
 import ru.practicum.users.model.User;
 import ru.practicum.users.service.UsersService;
@@ -87,7 +90,7 @@ public class EventServiceImpl implements EventService {
     }
 
     @Override
-    public List<EventShortDto> getAlUsersEvents(Integer from, Integer size, Long userId) {
+    public List<EventShortDto> getAllUsersEvents(Integer from, Integer size, Long userId) {
         Integer page = from / size;
         PageRequest pageRequest = PageRequest.of(page, size);
         log.info("Выгрузка списка мероприятий для пользователя с ID = {} с параметрами: size={}, from={}.",userId, size, page);
@@ -95,6 +98,19 @@ public class EventServiceImpl implements EventService {
         List<Event> requests = pageEvents.getContent();
         List<EventShortDto> requestsDto = EventMapper.INSTANT.toEventShortDto(requests);
         return requestsDto;
+    }
+
+    @Override
+    public List<ParticipationRequestDto> getRequestsOnEvent(Long userId, Long eventId) {
+        log.info("Выгрузка списка запросов на участие в мероприятии с ID = {}.", eventId);
+        usersService.isUserPresent(userId);
+        Event event = getEventById(eventId);
+        if (!event.getInitiator().getId().equals(userId)) {
+            throw new BadRequestException("Только организатор может просматривать список запросов на участие.");
+        } else {
+            List<Request> request = requestRepository.findAllByEventId(eventId);
+            return RequestMapper.INSTANT.toParticipationRequestDto(request);
+        }
     }
 
     @Override
@@ -180,4 +196,12 @@ public class EventServiceImpl implements EventService {
                 () -> new NotFoundException("Мероприятие с ID = " + eventId + " не найдено.")
         );
     }
+
+    @Override
+    public void isEventIsPresent(Long eventId) {
+        eventRepository.findById(eventId).orElseThrow(
+                () -> new NotFoundException("Мероприятие с ID = " + eventId + " не найдено.")
+        );
+    }
+
 }

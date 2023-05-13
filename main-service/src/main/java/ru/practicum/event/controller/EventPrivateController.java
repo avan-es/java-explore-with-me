@@ -9,6 +9,7 @@ import ru.practicum.event.dto.EventShortDto;
 import ru.practicum.event.dto.NewEventDto;
 import ru.practicum.event.dto.UpdateEventRequest;
 import ru.practicum.event.service.EventService;
+import ru.practicum.request.dto.ParticipationRequestDto;
 
 import javax.validation.Valid;
 import javax.validation.constraints.Positive;
@@ -51,11 +52,19 @@ public class EventPrivateController {
 
     @GetMapping
     @ResponseStatus(HttpStatus.OK)
-    public List<EventShortDto> getAlUsersEvents(
+    public List<EventShortDto> getAllUsersEvents(
             @Positive @PathVariable Long userId,
             @PositiveOrZero @RequestParam(value = "from", defaultValue = "0") Integer from,
             @Positive @RequestParam(value = "size", defaultValue = "10") Integer size) {
-        return eventService.getAlUsersEvents(from, size, userId);
+        return eventService.getAllUsersEvents(from, size, userId);
+    }
+
+    @GetMapping("/{eventId}/requests")
+    @ResponseStatus(HttpStatus.OK)
+    public List<ParticipationRequestDto> getRequestsOnEvent(
+            @Positive @PathVariable Long userId,
+            @Positive @PathVariable Long eventId) {
+        return eventService.getRequestsOnEvent(userId, eventId);
     }
 
 
