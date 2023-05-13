@@ -1,4 +1,4 @@
-package ru.practicum.request.privatePart.dto;
+package ru.practicum.request.dto;
 
 import java.util.List;
 
