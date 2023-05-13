@@ -6,6 +6,7 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import ru.practicum.event.dto.EventFullDto;
 import ru.practicum.event.dto.NewEventDto;
+import ru.practicum.event.dto.UpdateEventRequest;
 import ru.practicum.event.service.EventService;
 
 import javax.validation.Valid;
@@ -27,6 +28,16 @@ public class EventPrivateController {
             @Valid @RequestBody NewEventDto newEvent) {
         return eventService.createEvent(userId, newEvent);
     }
+
+    @PatchMapping("/{eventId}")
+    @ResponseStatus(HttpStatus.OK)
+    public EventFullDto updateEventByUser(
+            @Positive @PathVariable Long userId,
+            @Positive @PathVariable Long eventId,
+            @Valid @RequestBody UpdateEventRequest updatedEventByUser) {
+        return eventService.updateEventByUser(userId, eventId, updatedEventByUser);
+    }
+
 
     /*
     @PostMapping
