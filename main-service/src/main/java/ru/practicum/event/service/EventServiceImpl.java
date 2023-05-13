@@ -2,6 +2,8 @@ package ru.practicum.event.service;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import ru.practicum.ApiError.exception.BadRequestException;
@@ -10,9 +12,11 @@ import ru.practicum.ApiError.exception.NotFoundException;
 import ru.practicum.ApiError.exception.ValidationException;
 import ru.practicum.StatisticClientController;
 import ru.practicum.category.dto.CategoryDto;
+import ru.practicum.category.model.Category;
 import ru.practicum.category.model.CategoryMapper;
 import ru.practicum.category.service.CategoryService;
 import ru.practicum.event.dto.EventFullDto;
+import ru.practicum.event.dto.EventShortDto;
 import ru.practicum.event.dto.NewEventDto;
 import ru.practicum.event.dto.UpdateEventRequest;
 import ru.practicum.event.enums.EventState;
@@ -26,7 +30,9 @@ import ru.practicum.users.model.User;
 import ru.practicum.users.service.UsersService;
 
 import java.time.LocalDateTime;
+import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 
 @Service
@@ -75,8 +81,20 @@ public class EventServiceImpl implements EventService {
 
     @Override
     public EventFullDto getFullEventById(Long userId, Long eventId) {
+        log.info("Пользователь с ID = {} запросил информации о мероприятии с ID = {}.", userId, eventId);
         usersService.isUserPresent(eventId);
         return EventMapper.INSTANT.toEventFullDto(getEventById(eventId));
+    }
+
+    @Override
+    public List<EventShortDto> getAlUsersEvents(Integer from, Integer size, Long userId) {
+        Integer page = from / size;
+        PageRequest pageRequest = PageRequest.of(page, size);
+        log.info("Выгрузка списка мероприятий для пользователя с ID = {} с параметрами: size={}, from={}.",userId, size, page);
+        Page<Event> pageEvents = eventRepository.getAllEventsByUserId(userId, pageRequest);
+        List<Event> requests = pageEvents.getContent();
+        List<EventShortDto> requestsDto = EventMapper.INSTANT.toEventShortDto(requests);
+        return requestsDto;
     }
 
     @Override
