@@ -18,6 +18,7 @@ public interface EventService {
 
     Event updateEvent(Event updatedEvent, UpdateEventRequest updateEventRequest);
     void setEventStateByEventStateAction(Event event, EventStateAction eventStateAction);
+    EventFullDto getFullEventById(Long userId, Long eventId);
 
 
 
@@ -26,4 +27,5 @@ public interface EventService {
     Event getEventById(Long eventId);
     void checkIfEvenDateCorrect(LocalDateTime evenDate);
     void checkIfEventCanBeUpdated(UpdateEventRequest updatedEven, Event oldEvent, User user);
+
 }

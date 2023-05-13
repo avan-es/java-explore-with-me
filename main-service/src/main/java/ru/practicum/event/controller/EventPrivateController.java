@@ -38,6 +38,14 @@ public class EventPrivateController {
         return eventService.updateEventByUser(userId, eventId, updatedEventByUser);
     }
 
+    @GetMapping("/{eventId}")
+    @ResponseStatus(HttpStatus.OK)
+    public EventFullDto getFullEventById(
+            @Positive @PathVariable Long userId,
+            @Positive @PathVariable Long eventId) {
+        return eventService.getFullEventById(userId, eventId);
+    }
+
 
     /*
     @PostMapping

@@ -74,6 +74,12 @@ public class EventServiceImpl implements EventService {
     }
 
     @Override
+    public EventFullDto getFullEventById(Long userId, Long eventId) {
+        usersService.isUserPresent(eventId);
+        return EventMapper.INSTANT.toEventFullDto(getEventById(eventId));
+    }
+
+    @Override
     public Event updateEvent(Event updatedEvent, UpdateEventRequest updateEventRequest) {
         Optional.ofNullable(updateEventRequest.getAnnotation()).ifPresent(updatedEvent::setAnnotation);
         Optional.ofNullable(updateEventRequest.getCategory()).ifPresent(
@@ -145,6 +151,7 @@ public class EventServiceImpl implements EventService {
                 break;
         }
     }
+
 
 
 
