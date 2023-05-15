@@ -37,6 +37,12 @@ services:
       - ewm-db
       - stats-server
     environment:
+      - DB_NAME=shareWithMeMainDb
+      - DB_HOST=ewm-db
+      - DB_PORT=5432
+      - POSTGRES_USER=root
+      - POSTGRES_PASSWORD=root
+      - TZ=Europe/Moscow
       - SERVER_URL=http://stats-server:9090
 
   ewm-db:
