@@ -7,6 +7,8 @@ import ru.practicum.event.dto.NewEventDto;
 import ru.practicum.event.dto.UpdateEventRequest;
 import ru.practicum.event.enums.EventStateAction;
 import ru.practicum.event.model.Event;
+import ru.practicum.request.dto.EventRequestStatusUpdateRequest;
+import ru.practicum.request.dto.EventRequestStatusUpdateResult;
 import ru.practicum.request.dto.ParticipationRequestDto;
 import ru.practicum.users.model.User;
 
@@ -26,6 +28,8 @@ public interface EventService {
     List<EventShortDto> getAllUsersEvents(Integer from, Integer size, Long userId);
 
     List<ParticipationRequestDto> getRequestsOnEvent(Long userId, Long eventId);
+
+    EventRequestStatusUpdateResult processWithEventsRequests(Long userId, Long eventId, EventRequestStatusUpdateRequest requests);
 
 
 

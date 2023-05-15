@@ -9,6 +9,8 @@ import ru.practicum.event.dto.EventShortDto;
 import ru.practicum.event.dto.NewEventDto;
 import ru.practicum.event.dto.UpdateEventRequest;
 import ru.practicum.event.service.EventService;
+import ru.practicum.request.dto.EventRequestStatusUpdateRequest;
+import ru.practicum.request.dto.EventRequestStatusUpdateResult;
 import ru.practicum.request.dto.ParticipationRequestDto;
 
 import javax.validation.Valid;
@@ -67,6 +69,15 @@ public class EventPrivateController {
         return eventService.getRequestsOnEvent(userId, eventId);
     }
 
+    @PatchMapping("/{eventId}/requests")
+    @ResponseStatus(HttpStatus.OK)
+    public EventRequestStatusUpdateResult processWithEventsRequests(
+            @Valid @RequestBody EventRequestStatusUpdateRequest requests,
+            @Positive @PathVariable Long userId,
+            @Positive @PathVariable Long eventId) {
+        return eventService.processWithEventsRequests(userId, eventId, requests);
+    }
+
 
     /*
     @PostMapping
@@ -76,13 +87,7 @@ public class EventPrivateController {
         return categoryService.createCategory(newCategory);
     }
 
-    @PatchMapping("/{catId}")
-    @ResponseStatus(HttpStatus.OK)
-    public CategoryDto patchCategoryById(
-            @Valid @RequestBody NewCategoryDto updatedCategory,
-            @Positive @PathVariable Long catId) {
-        return categoryService.patchCategoryById(catId, updatedCategory);
-    }
+
 
     @DeleteMapping("/{catId}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
