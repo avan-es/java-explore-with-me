@@ -1,12 +1,24 @@
 package ru.practicum.request.dto;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import ru.practicum.request.enums.RequestStatus;
+
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 import java.util.List;
 
-//Изменение статуса запроса на участие в событии текущего пользователя
+@Data
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
 public class EventRequestStatusUpdateRequest {
-    //Идентификаторы запросов на участие в событии текущего пользователя
+
+    @NotNull @NotEmpty
     private List<Long> requestIds;
-    //Новый статус запроса на участие в событии текущего пользователя
-    //CONFIRMED, REJECTED
-    private String status;
+
+    @NotNull
+    private RequestStatus status;
 }
