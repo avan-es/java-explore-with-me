@@ -14,7 +14,7 @@ services:
       - DB_PORT=5432
       - POSTGRES_USER=root
       - POSTGRES_PASSWORD=root
-      - TZ=Europe/Moscow
+#      - TZ=Europe/Moscow
 
   stats-db:
     image: postgres:14-alpine
@@ -25,7 +25,7 @@ services:
       - POSTGRES_PASSWORD=root
       - POSTGRES_USER=root
       - POSTGRES_DB=shareWithMeStatDb
-      - TZ=Europe/Moscow
+#      - TZ=Europe/Moscow
 
   ewm-service:
     build: main-service
@@ -42,7 +42,7 @@ services:
       - DB_PORT=5432
       - POSTGRES_USER=root
       - POSTGRES_PASSWORD=root
-      - TZ=Europe/Moscow
+#      - TZ=Europe/Moscow
       - SERVER_URL=http://stats-server:9090
 
   ewm-db:
@@ -54,4 +54,4 @@ services:
       - POSTGRES_PASSWORD=root
       - POSTGRES_USER=root
       - POSTGRES_DB=shareWithMeMainDb
-      - TZ=Europe/Moscow
+#      - TZ=Europe/Moscow
