@@ -1,6 +1,7 @@
 package ru.practicum.ApiError;
 
 import org.springframework.http.HttpStatus;
+import org.springframework.web.HttpRequestMethodNotSupportedException;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -86,6 +87,16 @@ public class ErrorHandler {
     public ErrorResponse onBadRequestException(BadRequestException e) {
         return new ErrorResponse(HttpStatus.BAD_REQUEST,
                 "Некорректный запрос.",
+                e.getMessage(),
+                LocalDateTime.now());
+    }
+
+    @ExceptionHandler(HttpRequestMethodNotSupportedException.class)
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    @ResponseBody
+    public ErrorResponse onMethodNotAllowedException(HttpRequestMethodNotSupportedException e) {
+        return new ErrorResponse(HttpStatus.BAD_REQUEST,
+                "Такого метода нет.",
                 e.getMessage(),
                 LocalDateTime.now());
     }
