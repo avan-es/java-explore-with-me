@@ -6,7 +6,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import ru.practicum.event.dto.EventFullDto;
 import ru.practicum.event.dto.UpdateEventRequest;
-import ru.practicum.event.enums.EventSort;
 import ru.practicum.event.enums.EventState;
 import ru.practicum.event.service.EventService;
 
@@ -32,7 +31,6 @@ public class EventAdminController {
             @RequestParam(required = false) Set<Long> users,
             @RequestParam(required = false) Set<EventState> states,
             @RequestParam(required = false) Set<Long> categories,
-            @RequestParam(defaultValue = "EVENT_DATE") EventSort sortBy,
             @RequestParam(required = false)
             @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss") LocalDateTime rangeStart,
             @RequestParam(required = false)
@@ -45,7 +43,7 @@ public class EventAdminController {
         rangeStart = rangeStart == null ? LocalDateTime.now() : rangeStart;
         rangeEnd = rangeEnd == null ? rangeStart.plusYears(100) : rangeEnd;
         return eventService.getAllEventsByAdmin(
-                users, states, categories, rangeStart, rangeEnd, from, size, sortBy);
+                users, states, categories, rangeStart, rangeEnd, from, size);
     }
 
     @PatchMapping("/{eventId}")
