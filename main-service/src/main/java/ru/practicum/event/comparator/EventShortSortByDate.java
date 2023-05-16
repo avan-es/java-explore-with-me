@@ -1,6 +1,5 @@
 package ru.practicum.event.comparator;
 
-import org.jetbrains.annotations.NotNull;
 import ru.practicum.event.dto.EventShortDto;
 
 import java.util.Comparator;
