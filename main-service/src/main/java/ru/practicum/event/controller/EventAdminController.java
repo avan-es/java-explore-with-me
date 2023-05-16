@@ -5,10 +5,12 @@ import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import ru.practicum.event.dto.EventFullDto;
+import ru.practicum.event.dto.UpdateEventRequest;
 import ru.practicum.event.enums.EventSort;
 import ru.practicum.event.enums.EventState;
 import ru.practicum.event.service.EventService;
 
+import javax.validation.Valid;
 import javax.validation.constraints.Positive;
 import javax.validation.constraints.PositiveOrZero;
 import java.time.LocalDateTime;
@@ -44,5 +46,13 @@ public class EventAdminController {
         rangeEnd = rangeEnd == null ? rangeStart.plusYears(100) : rangeEnd;
         return eventService.getAllEventsByAdmin(
                 users, states, categories, rangeStart, rangeEnd, from, size, sortBy);
+    }
+
+    @PatchMapping("/{eventId}")
+    @ResponseStatus(HttpStatus.OK)
+    public EventFullDto updateEventByAdmin(
+            @Positive @PathVariable Long eventId,
+            @Valid @RequestBody UpdateEventRequest updatedEventByAdmin) {
+        return eventService.updateEvent(null, eventId, updatedEventByAdmin, true, false);
     }
 }
