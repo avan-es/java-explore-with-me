@@ -101,7 +101,7 @@ public class EventServiceImpl implements EventService {
     @Override
     public EventFullDto getFullEventById(Long userId, Long eventId) {
         log.info("Пользователь с ID = {} запросил информации о мероприятии с ID = {}.", userId, eventId);
-        usersService.isUserPresent(eventId);
+        usersService.isUserPresent(userId);
         return EventMapper.INSTANT.toEventFullDto(getEventById(eventId));
     }
 
@@ -213,7 +213,7 @@ public class EventServiceImpl implements EventService {
         Optional.ofNullable(updateEventRequest.getStateAction()).ifPresent(
                 s -> setEventStateByEventStateAction(updatedEvent, updateEventRequest.getStateAction())
         );
-        Optional.ofNullable(updateEventRequest.getTitle()).ifPresent(updateEventRequest::setTitle);
+        Optional.ofNullable(updateEventRequest.getTitle()).ifPresent(updatedEvent::setTitle);
         return updatedEvent;
     }
 

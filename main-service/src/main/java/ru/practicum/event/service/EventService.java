@@ -22,7 +22,7 @@ public interface EventService {
 
     EventFullDto createEvent(Long userId, NewEventDto newEvent);
 
-    EventFullDto updateEventByUser(Long userId, Long eventId, UpdateEventRequest updateEventByUser);
+    EventFullDto updateEvent(Long userId, Long eventId, UpdateEventRequest updateEventByUser, Boolean isAdmin, Boolean isOwner);
 
     Event updateEvent(Event updatedEvent, UpdateEventRequest updateEventRequest);
 
