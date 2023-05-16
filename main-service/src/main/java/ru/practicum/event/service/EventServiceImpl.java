@@ -76,15 +76,26 @@ public class EventServiceImpl implements EventService {
 
     @Override
     @Transactional
-    public EventFullDto updateEventByUser(Long userId, Long eventId, UpdateEventRequest updateEventByUser) {
-        log.info("Пользователь с ID = {} обновляет мероприятие с ID = {}.", userId, eventId);
-        User user = usersService.getUserById(userId);
-        categoryService.isCategoryPresent(updateEventByUser.getCategory());
+    public EventFullDto updateEvent(Long userId, Long eventId, UpdateEventRequest updateEvent, Boolean isAdmin, Boolean isOwner) {
+        if (updateEvent.getCategory() != null) {
+            categoryService.isCategoryPresent(updateEvent.getCategory());
+        }
         Event eventForUpdate = getEventById(eventId);
-        checkIfEventCanBeUpdated(updateEventByUser, eventForUpdate, user);
+        if (isOwner) {
+            log.info("Пользователь с ID = {} обновляет мероприятие с ID = {}.", userId, eventId);
+            User user = usersService.getUserById(userId);
+            checkIfEventCanBeUpdated(updateEvent, eventForUpdate, user);
+            log.debug("Пользователь с ID = {} обновил мероприятие с ID = {}.", userId, eventId);
+        } else {
+            log.info("Администратор обновляет мероприятие с ID = {}.", eventId);
+            if (updateEvent.getEventDate() != null) {
+                checkIfEvenDateCorrect(updateEvent.getEventDate());
+            }
+            log.debug("Администратор обновил мероприятие с ID = {}.", eventId);
+        }
         return EventMapper.INSTANT.toEventFullDto(
                 eventRepository.save(
-                        updateEvent(eventForUpdate, updateEventByUser)));
+                        updateEvent(eventForUpdate, updateEvent)));
     }
 
     @Override
@@ -118,6 +129,7 @@ public class EventServiceImpl implements EventService {
         }
     }
 
+    //TODO проверить работу метода
     @Override
     @Transactional
     public EventRequestStatusUpdateResult processWithEventsRequests(
@@ -187,8 +199,14 @@ public class EventServiceImpl implements EventService {
                 c -> updatedEvent.setCategory(categoryService.getCategoryModelById(c)));
         Optional.ofNullable(updateEventRequest.getDescription()).ifPresent(updatedEvent::setDescription);
         Optional.ofNullable(updateEventRequest.getEventDate()).ifPresent(updatedEvent::setEventDate);
-        Optional.ofNullable(updateEventRequest.getLocation().getLat()).ifPresent(updatedEvent::setLat);
-        Optional.ofNullable(updateEventRequest.getLocation().getLon()).ifPresent(updatedEvent::setLon);
+        if (updateEventRequest.getLocation() != null) {
+            if (updateEventRequest.getLocation().getLat() != null) {
+                updatedEvent.setLat(updateEventRequest.getLocation().getLat());
+            }
+            if (updateEventRequest.getLocation().getLon() != null) {
+                updatedEvent.setLon(updateEventRequest.getLocation().getLon());
+            }
+        }
         Optional.ofNullable(updateEventRequest.getPaid()).ifPresent(updatedEvent::setPaid);
         Optional.ofNullable(updateEventRequest.getParticipantLimit()).ifPresent(updatedEvent::setParticipantLimit);
         Optional.ofNullable(updateEventRequest.getRequestModeration()).ifPresent(updatedEvent::setRequestModeration);
@@ -214,7 +232,9 @@ public class EventServiceImpl implements EventService {
             log.error("Только инициатор или администратор могут менять мероприятие.");
             throw new BadRequestException("Только инициатор или администратор могут менять мероприятие.");
         }
-        checkIfEvenDateCorrect(updatedEven.getEventDate());
+        if (updatedEven.getEventDate() != null) {
+            checkIfEvenDateCorrect(updatedEven.getEventDate());
+        }
         if (oldEvent.getState().equals(EventState.PUBLISHED)) {
             log.error("Только мероприятия со статусом PENDING или CANCELED могут быть изменены.");
             throw new ConflictException("Только мероприятия со статусом PENDING или CANCELED могут быть изменены.");
