@@ -16,7 +16,6 @@ import ru.practicum.ApiError.exception.ValidationException;
 import ru.practicum.category.dto.CategoryDto;
 import ru.practicum.category.model.CategoryMapper;
 import ru.practicum.category.service.CategoryService;
-import ru.practicum.event.comparator.EventShortSortByDate;
 import ru.practicum.event.dto.EventFullDto;
 import ru.practicum.event.dto.EventShortDto;
 import ru.practicum.event.dto.NewEventDto;
