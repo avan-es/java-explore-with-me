@@ -112,7 +112,7 @@ public class CategoryServiceImpl implements CategoryService {
     public void isCategoryUsing(Long catId) {
         if (eventRepository.findFirstByCategory(catId) != null) {
             log.error("Категория c ID = {} используется и не может быть удалена.",catId);
-            throw new BadRequestException("Категория c ID = " + catId + " используется и не может быть удалена.");
+            throw new ConflictException("Категория c ID = " + catId + " используется и не может быть удалена.");
         }
     }
 }
