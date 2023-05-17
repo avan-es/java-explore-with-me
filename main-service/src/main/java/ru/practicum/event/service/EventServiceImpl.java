@@ -11,7 +11,6 @@ import org.springframework.transaction.annotation.Transactional;
 import ru.practicum.ApiError.exception.BadRequestException;
 import ru.practicum.ApiError.exception.ConflictException;
 import ru.practicum.ApiError.exception.NotFoundException;
-import ru.practicum.ApiError.exception.ValidationException;
 //import ru.practicum.StatisticClientController;
 import ru.practicum.category.dto.CategoryDto;
 import ru.practicum.category.model.CategoryMapper;
@@ -236,7 +235,7 @@ public class EventServiceImpl implements EventService {
     public void checkIfEvenDateCorrect(LocalDateTime evenDate) {
         if (LocalDateTime.now().plusHours(2).isAfter(evenDate)) {
             log.error("Некорректная дата начала мероприятия. (Меньше 2-х часов до начала).");
-            throw new ValidationException("Некорректная дата начала мероприятия. (Меньше 2-х часов до начала).");
+            throw new ConflictException("Некорректная дата начала мероприятия. (Меньше 2-х часов до начала).");
         }
     }
 
