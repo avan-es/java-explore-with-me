@@ -210,11 +210,10 @@ public class EventServiceImpl implements EventService {
         Optional.ofNullable(updateEventRequest.getRequestModeration()).ifPresent(updatedEvent::setRequestModeration);
         if (isAdmin) {
             if (updateEventRequest.getStateAction() != null
-                    && updateEventRequest.getStateAction().equals(EventStateAction.PUBLISH_EVENT)
-            && !updatedEvent.getState().equals(EventState.PUBLISHED)) {
+            && updatedEvent.getState().equals(EventState.PENDING)) {
                 setEventStateByEventStateAction(updatedEvent, updateEventRequest.getStateAction());
             } else {
-                throw new ConflictException("Мероприятие с ID = " + updatedEvent.getId() + " уже опубликовано.");
+                throw new ConflictException("Мероприятие с ID = " + updatedEvent.getId() + " уже опубликовано/отменено.");
             }
         } else {
             Optional.ofNullable(updateEventRequest.getStateAction()).ifPresent(
