@@ -93,7 +93,7 @@ public class EventServiceImpl implements EventService {
         }
         return EventMapper.INSTANT.toEventFullDto(
                 eventRepository.save(
-                        updateEvent(eventForUpdate, updateEvent)));
+                        updateEvent(eventForUpdate, updateEvent, isAdmin)));
     }
 
     @Override
@@ -191,7 +191,7 @@ public class EventServiceImpl implements EventService {
 
 
     @Override
-    public Event updateEvent(Event updatedEvent, UpdateEventRequest updateEventRequest) {
+    public Event updateEvent(Event updatedEvent, UpdateEventRequest updateEventRequest, Boolean isAdmin) {
         Optional.ofNullable(updateEventRequest.getAnnotation()).ifPresent(updatedEvent::setAnnotation);
         Optional.ofNullable(updateEventRequest.getCategory()).ifPresent(
                 c -> updatedEvent.setCategory(categoryService.getCategoryModelById(c)));
@@ -208,9 +208,19 @@ public class EventServiceImpl implements EventService {
         Optional.ofNullable(updateEventRequest.getPaid()).ifPresent(updatedEvent::setPaid);
         Optional.ofNullable(updateEventRequest.getParticipantLimit()).ifPresent(updatedEvent::setParticipantLimit);
         Optional.ofNullable(updateEventRequest.getRequestModeration()).ifPresent(updatedEvent::setRequestModeration);
-        Optional.ofNullable(updateEventRequest.getStateAction()).ifPresent(
-                s -> setEventStateByEventStateAction(updatedEvent, updateEventRequest.getStateAction())
-        );
+        if (isAdmin) {
+            if (updateEventRequest.getStateAction() != null
+                    && updateEventRequest.getStateAction().equals(EventStateAction.PUBLISH_EVENT)
+            && !updatedEvent.getState().equals(EventState.PUBLISHED)) {
+                setEventStateByEventStateAction(updatedEvent, updateEventRequest.getStateAction());
+            } else {
+                throw new ConflictException("Мероприятие с ID = " + updatedEvent.getId() + " уже опубликовано.");
+            }
+        } else {
+            Optional.ofNullable(updateEventRequest.getStateAction()).ifPresent(
+                    s -> setEventStateByEventStateAction(updatedEvent, updateEventRequest.getStateAction())
+            );
+        }
         Optional.ofNullable(updateEventRequest.getTitle()).ifPresent(updatedEvent::setTitle);
         return updatedEvent;
     }
