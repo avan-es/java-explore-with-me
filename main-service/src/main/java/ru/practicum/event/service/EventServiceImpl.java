@@ -364,7 +364,7 @@ public class EventServiceImpl implements EventService {
 
     @Override
     public EventFullDto getEventByIdPubic(Long eventId) {
-        Event event = eventRepository.findFirstByIdAndState(eventId, EventState.PUBLISHED.toString());
+        Event event = eventRepository.findFirstByIdAndState(eventId, EventState.PUBLISHED);
         if (event != null) {
             return EventMapper.INSTANT.toEventFullDto(event);
         } else {
