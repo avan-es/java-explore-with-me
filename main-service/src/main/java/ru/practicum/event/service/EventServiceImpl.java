@@ -344,10 +344,10 @@ public class EventServiceImpl implements EventService {
         }
         Page<Event> eventsPage;
         if (text != null) {
-            byAnnotation = QEvent.event.annotation.likeIgnoreCase(text);
-            byDescription = QEvent.event.description.likeIgnoreCase(text);
+            byAnnotation = QEvent.event.annotation.likeIgnoreCase("%" + text + "%");
+            byDescription = QEvent.event.description.likeIgnoreCase("%" + text + "%");
             eventsPage = eventRepository.findAll(
-                    byAnnotation.and(byDescription).and(byPaid).and(byDate).and(byCategories).and(byState), pageable);
+                    byAnnotation.or(byDescription).and(byPaid).and(byDate).and(byCategories).and(byState), pageable);
         } else {
             eventsPage = eventRepository.findAll(
                     byPaid.and(byDate).and(byCategories).and(byState), pageable);
