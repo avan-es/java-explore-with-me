@@ -7,6 +7,7 @@ import ru.practicum.event.model.EventMapper;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 public enum CompilationMapper {
     INSTANT;
@@ -35,5 +36,9 @@ public enum CompilationMapper {
                 .title(compilationOld.getTitle())
                 .events(events)
                 .build();
+    }
+
+    public List<CompilationDto> toCompilationDto(List<Compilation> compilations) {
+        return compilations.stream().map(CompilationMapper.INSTANT::toCompilationDto).collect(Collectors.toList());
     }
 }

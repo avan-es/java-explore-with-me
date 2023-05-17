@@ -2,6 +2,8 @@ package ru.practicum.compilation.service;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import ru.practicum.ApiError.exception.NotFoundException;
@@ -69,4 +71,20 @@ public class CompilationServiceImpl implements CompilationService {
         log.debug("Администратор удаляет подборку с ID = {}.", compId);
         compilationRepository.deleteById(compId);
     }
+
+    @Override
+    public CompilationDto getCompilationByIdPublic(Long compId) {
+        return CompilationMapper.INSTANT.toCompilationDto(getCompilationById(compId));
+    }
+
+    @Override
+    public List<CompilationDto> getComplicationsPublic(Boolean pinned, Integer from, Integer size) {
+        int page = from / size;
+        PageRequest pageRequest = PageRequest.of(page, size);
+        log.info("Выгрузка списка подборок с параметрами: pinned = {}, size={}, from={}.",pinned, size, page);
+        Page<Compilation> pageCompilation = compilationRepository.findAllByPinned(pinned, pageRequest);
+        List<Compilation> requests = pageCompilation.getContent();
+        return CompilationMapper.INSTANT.toCompilationDto(requests);
+    }
+
 }
