@@ -8,6 +8,8 @@ import org.springframework.data.querydsl.QuerydslPredicateExecutor;
 import org.springframework.stereotype.Repository;
 import ru.practicum.event.model.Event;
 
+import java.util.List;
+
 
 @Repository(value = "dbEventRepository")
 public interface EventRepository extends JpaRepository<Event, Long>, QuerydslPredicateExecutor<Event> {
@@ -26,4 +28,6 @@ public interface EventRepository extends JpaRepository<Event, Long>, QuerydslPre
     Page<Event> getAllEventsByUserId(Long userId, PageRequest pageRequest);
 
     Event findFirstByIdAndState(Long evenId, String state);
+
+    List<Event> getByIdIn(List<Long> events);
 }

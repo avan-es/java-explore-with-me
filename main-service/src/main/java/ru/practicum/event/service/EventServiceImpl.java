@@ -364,4 +364,11 @@ public class EventServiceImpl implements EventService {
         }
     }
 
+    @Override
+    public List<Event> getEventByIds(List<Long> events) {
+        log.info("Выгрузка списка мероприятий по списку ID.");
+        return eventRepository.getByIdIn(events);
+    }
+
+
 }
