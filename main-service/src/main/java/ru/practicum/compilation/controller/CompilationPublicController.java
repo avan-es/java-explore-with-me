@@ -1,6 +1,5 @@
 package ru.practicum.compilation.controller;
 
-import jdk.jfr.BooleanFlag;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -22,7 +21,7 @@ public class CompilationPublicController {
     @GetMapping("/{compId}")
     @ResponseStatus(HttpStatus.OK)
     public CompilationDto getComplicationById(
-            @PathVariable Long compId){
+            @PathVariable Long compId) {
         return compilationService.getCompilationByIdPublic(compId);
     }
 
