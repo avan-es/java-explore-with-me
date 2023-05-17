@@ -27,4 +27,13 @@ public enum CompilationMapper {
                 .pinned(compilation.getPinned())
                 .build();
     }
+
+    public Compilation toCompilation(Compilation compilationOld, List<Event> events) {
+        return Compilation.builder()
+                .id(compilationOld.getId())
+                .pinned(Optional.ofNullable(compilationOld.getPinned()).orElse(false))
+                .title(compilationOld.getTitle())
+                .events(events)
+                .build();
+    }
 }
