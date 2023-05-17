@@ -24,4 +24,6 @@ public interface EventRepository extends JpaRepository<Event, Long>, QuerydslPre
             "FROM events AS e " +
             "WHERE e.initiator_id = ?1 ", nativeQuery = true)
     Page<Event> getAllEventsByUserId(Long userId, PageRequest pageRequest);
+
+    Event findFirstByIdAndState(Long evenId, String state);
 }

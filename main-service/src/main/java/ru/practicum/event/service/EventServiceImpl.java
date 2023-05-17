@@ -305,6 +305,7 @@ public class EventServiceImpl implements EventService {
         return EventMapper.INSTANT.iterableToList(foundEvents);
     }
 
+    //TODO проверить (сортировка) + hit в стат
     @Override
     public List<EventShortDto> getEventsByPublic(
             String text, Set<Long> categories, Boolean paid, LocalDateTime rangeStart, LocalDateTime rangeEnd,
@@ -351,6 +352,16 @@ public class EventServiceImpl implements EventService {
 //        List<EventShortDto> sortedResult = result.stream()
 //                .sorted(Comparator.comparing(EventShortSortByDate, EventShortDto::getEventDate).collect(Collectors.toList());
         return EventMapper.INSTANT.toEventShortDto(events);
+    }
+
+    @Override
+    public EventFullDto getEventByIdPubic(Long eventId) {
+        Event event = eventRepository.findFirstByIdAndState(eventId, EventState.PUBLISHED.toString());
+        if (event != null) {
+            return EventMapper.INSTANT.toEventFullDto(event);
+        } else {
+            throw new NotFoundException("Мероприятие с ID = " + eventId + " не найдено.");
+        }
     }
 
 }
