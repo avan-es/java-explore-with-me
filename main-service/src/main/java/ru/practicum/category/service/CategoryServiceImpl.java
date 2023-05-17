@@ -7,8 +7,8 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import ru.practicum.ApiError.exception.BadRequestException;
+import ru.practicum.ApiError.exception.ConflictException;
 import ru.practicum.ApiError.exception.NotFoundException;
-import ru.practicum.ApiError.exception.ValidationException;
 import ru.practicum.category.dto.CategoryDto;
 import ru.practicum.category.dto.NewCategoryDto;
 import ru.practicum.category.model.Category;
@@ -96,7 +96,7 @@ public class CategoryServiceImpl implements CategoryService {
     public void isCategoryNameIsBusy(String name) {
         if (categoryRepository.findFirstByName(name) != null) {
             log.error("Категория \"{}\" уже существует.",name);
-            throw new ValidationException("Категория уже существует.");
+            throw new ConflictException("Категория уже существует.");
         }
     }
 
