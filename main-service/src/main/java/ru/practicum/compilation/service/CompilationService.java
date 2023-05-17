@@ -13,4 +13,6 @@ public interface CompilationService {
     CompilationDto updateCompilationById(Long compId, UpdateCompilationRequest updatedCompilation);
 
     Compilation getCompilationById(Long compId);
+
+    void deleteComplication(Long compId);
 }

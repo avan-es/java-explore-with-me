@@ -62,4 +62,11 @@ public class CompilationServiceImpl implements CompilationService {
                 () -> new NotFoundException("Подборка с ID = " + compId + " не найдена.")
         );
     }
+
+    @Override
+    @Transactional
+    public void deleteComplication(Long compId) {
+        log.debug("Администратор удаляет подборку с ID = {}.", compId);
+        compilationRepository.deleteById(compId);
+    }
 }
