@@ -90,15 +90,7 @@ public class RequestServiceImpl implements RequestService {
             log.error("Попытка отмены чужой регистрации на мероприятии пользователем с ID = {}.", userId);
             throw new BadRequestException("Вы не можете отменить чужую заявку.");
         }
-        if (!request.getStatus().equals(RequestStatus.PENDING)) {
-            log.error("Ваша заявка на мероприятие с ID = {} уже была обработана. Статус заявки: \"{}\".",
-                    request.getEvent().getId(), request.getStatus());
-            throw new ConflictException("Ваша заявка на мероприятие с ID = " + request.getEvent().getId() +
-                    " уже была обработана. Статус заявки: \"" + request.getStatus() + "\".");
-
-        } else {
-            request.setStatus(RequestStatus.CANCELED);
-        }
+        request.setStatus(RequestStatus.CANCELED);
         return RequestMapper.INSTANT.toParticipationRequestDto(request);
     }
 

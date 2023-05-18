@@ -147,7 +147,7 @@ public class EventServiceImpl implements EventService {
         EventRequestStatusUpdateResult eventRequestStatusUpdateResult = new EventRequestStatusUpdateResult();
         List<Request> requestsList = requestRepository.findAllByIdInAndStatus(
                 requests.getRequestIds(), RequestStatus.PENDING);
-        if (!requestsList.isEmpty()/*requests.getStatus().equals(RequestStatus.CONFIRMED)*/) {
+        if (requests.getStatus().equals(RequestStatus.CONFIRMED)) {
             int freePlaces = event.getParticipantLimit() - event.getParticipants().size();
             int count = 0;
             for (Request request: requestsList) {
@@ -165,8 +165,7 @@ public class EventServiceImpl implements EventService {
                 }
                 log.debug("Статус запроса с ID = {} на \"{}\".", request.getId(), request.getStatus());
             }
-            requestRepository.saveAll(requestsList);
-        } /*else {
+        } else {
             for (Request request: requestsList) {
                 checkRequestBeforeUpdate(event, request);
                 log.info("Обработка запроса с ID = {}.", request.getId());
@@ -175,8 +174,8 @@ public class EventServiceImpl implements EventService {
                         .add(RequestMapper.INSTANT.toParticipationRequestDto(request));
                 log.debug("Статус запроса с ID = {} на \"{}\".", request.getId(), RequestStatus.REJECTED);
             }
-        }*/
-        /*requestRepository.saveAll(requestsList);*/
+        }
+        requestRepository.saveAll(requestsList);
         return eventRequestStatusUpdateResult;
     }
 
