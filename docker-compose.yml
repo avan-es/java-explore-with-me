@@ -9,7 +9,7 @@ services:
     depends_on:
       - stats-db
     environment:
-      - DB_NAME=shareWithMeStatDb
+      - DB_NAME=exploreWithMeStatDb
       - DB_HOST=stats-db
       - DB_PORT=5432
       - POSTGRES_USER=root
@@ -24,7 +24,7 @@ services:
     environment:
       - POSTGRES_PASSWORD=root
       - POSTGRES_USER=root
-      - POSTGRES_DB=shareWithMeStatDb
+      - POSTGRES_DB=exploreWithMeStatDb
 #      - TZ=Europe/Moscow
 
   ewm-service:
@@ -37,7 +37,7 @@ services:
       - ewm-db
       - stats-server
     environment:
-      - DB_NAME=shareWithMeMainDb
+      - DB_NAME=exploreWithMeMainDb
       - DB_HOST=ewm-db
       - DB_PORT=5432
       - POSTGRES_USER=root
@@ -53,5 +53,5 @@ services:
     environment:
       - POSTGRES_PASSWORD=root
       - POSTGRES_USER=root
-      - POSTGRES_DB=shareWithMeMainDb
+      - POSTGRES_DB=exploreWithMeMainDb
 #      - TZ=Europe/Moscow

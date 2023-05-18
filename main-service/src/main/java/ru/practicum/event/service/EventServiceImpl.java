@@ -363,7 +363,7 @@ public class EventServiceImpl implements EventService {
         if (onlyAvailable) {
             events.removeIf(event -> event.getParticipants().size() == event.getParticipantLimit());
         }
-        statisticClientController.addHit(createStatisticPostDto(request));
+       // statisticClientController.addHit(createStatisticPostDto(request));
 
 //        List<EventShortDto> result = EventMapper.INSTANT.toEventShortDto(events);
 //        List<EventShortDto> sortedResult = result.stream()
@@ -375,7 +375,7 @@ public class EventServiceImpl implements EventService {
     public EventFullDto getEventByIdPubic(Long eventId, HttpServletRequest request) {
         Event event = eventRepository.findFirstByIdAndState(eventId, EventState.PUBLISHED);
         if (event != null) {
-            statisticClientController.addHit(createStatisticPostDto(request));
+            //statisticClientController.addHit(createStatisticPostDto(request));
             return EventMapper.INSTANT.toEventFullDto(event);
         } else {
             throw new NotFoundException("Мероприятие с ID = " + eventId + " не найдено.");
