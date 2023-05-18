@@ -387,7 +387,7 @@ public class EventServiceImpl implements EventService {
         return eventRepository.getByIdIn(events);
     }
 
-    private StatisticPostDto createStatisticPostDto (HttpServletRequest request) {
+    private StatisticPostDto createStatisticPostDto(HttpServletRequest request) {
         return new StatisticPostDto(
                 "ewm-main-service",
                 request.getRequestURI(),
