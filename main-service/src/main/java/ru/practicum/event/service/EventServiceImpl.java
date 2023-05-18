@@ -144,6 +144,9 @@ public class EventServiceImpl implements EventService {
         if (event.getParticipantLimit() == 0) {
             throw new BadRequestException("Запросы не требуют модерации. Лимит на участников не установлен.");
         }
+        if (event.getParticipantLimit() == event.getParticipants().size()) {
+            throw new ConflictException("Свободных мест нет.");
+        }
         EventRequestStatusUpdateResult eventRequestStatusUpdateResult = new EventRequestStatusUpdateResult();
         List<Request> requestsList = requestRepository.findAllByIdInAndStatus(
                 requests.getRequestIds(), RequestStatus.PENDING);
