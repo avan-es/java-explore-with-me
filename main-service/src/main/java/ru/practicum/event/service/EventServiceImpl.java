@@ -67,9 +67,10 @@ public class EventServiceImpl implements EventService {
         checkIfEvenDateCorrect(newEvent.getEventDate());
         User user = usersService.getUserById(userId);
         CategoryDto categoryDto = categoryService.getCategoryById(newEvent.getCategory());
-        Event event = eventRepository.save(EventMapper.INSTANT.toEvent(newEvent));
+        Event event = EventMapper.INSTANT.toEvent(newEvent);
         event.setInitiator(user);
         event.setCategory(CategoryMapper.INSTANT.categoryDtoToCategory(categoryDto));
+        eventRepository.save(event);
         log.debug("Пользователь с ID = {} создал мероприятие \"{}\". ID = {}.",
                 userId, newEvent.getTitle(), event.getId());
         return EventMapper.INSTANT.toEventFullDto(event);
