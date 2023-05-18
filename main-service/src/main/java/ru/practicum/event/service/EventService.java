@@ -14,6 +14,7 @@ import ru.practicum.request.dto.EventRequestStatusUpdateResult;
 import ru.practicum.request.dto.ParticipationRequestDto;
 import ru.practicum.users.model.User;
 
+import javax.servlet.http.HttpServletRequest;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Set;
@@ -48,11 +49,13 @@ public interface EventService {
 
     void isEventIsPresent(Long eventId);
 
-    List<EventFullDto> getAllEventsByAdmin(Set<Long> users, Set<EventState> states, Set<Long> categories, LocalDateTime rangeStart, LocalDateTime rangeEnd, Integer from, Integer size);
+    List<EventFullDto> getAllEventsByAdmin(Set<Long> users, Set<EventState> states, Set<Long> categories,
+                                           LocalDateTime rangeStart, LocalDateTime rangeEnd, Integer from, Integer size);
 
-    List<EventShortDto> getEventsByPublic(String text, Set<Long> categories, Boolean paid, LocalDateTime rangeStart, LocalDateTime rangeEnd, Boolean onlyAvailable, EventSort sort, Integer from, Integer size);
+    List<EventShortDto> getEventsByPublic(String text, Set<Long> categories, Boolean paid, LocalDateTime rangeStart,
+                                          LocalDateTime rangeEnd, Boolean onlyAvailable, EventSort sort, Integer from, Integer size, HttpServletRequest request);
 
-    EventFullDto getEventByIdPubic(Long eventId);
+    EventFullDto getEventByIdPubic(Long eventId, HttpServletRequest request);
 
     List<Event> getEventByIds(List<Long> events);
 }
