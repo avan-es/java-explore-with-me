@@ -24,7 +24,7 @@ import java.util.Set;
 @Service
 public class StatisticClient {
 
-    private String serverUrl = "http://localhost:9090";
+    private String serverUrl = "http://stats-server:9090";
 
     private final String appName = "ewm-service";
 

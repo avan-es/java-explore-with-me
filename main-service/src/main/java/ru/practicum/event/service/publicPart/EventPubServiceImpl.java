@@ -78,7 +78,7 @@ public class EventPubServiceImpl implements EventPubService {
         if (onlyAvailable) {
             events.removeIf(event -> event.getParticipants().size() == event.getParticipantLimit());
         }
-//        statisticClient.createHit(request.getRequestURI(), request.getRemoteAddr());
+        statisticClient.createHit(request.getRequestURI(), request.getRemoteAddr());
         return EventMapper.INSTANT.toEventShortDto(events);
     }
 
@@ -86,7 +86,7 @@ public class EventPubServiceImpl implements EventPubService {
     public EventFullDto getEventByIdPubic(Long eventId, HttpServletRequest request) {
         Event event = eventRepository.findFirstByIdAndState(eventId, EventState.PUBLISHED);
         if (event != null) {
-           // statisticClient.createHit(request.getRequestURI(), request.getRemoteAddr());
+            statisticClient.createHit(request.getRequestURI(), request.getRemoteAddr());
             return EventMapper.INSTANT.toEventFullDto(event);
         } else {
             throw new NotFoundException("Мероприятие с ID = " + eventId + " не найдено.");
