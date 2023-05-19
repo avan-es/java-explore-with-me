@@ -14,7 +14,7 @@ import ru.practicum.compilation.model.Compilation;
 import ru.practicum.compilation.model.CompilationMapper;
 import ru.practicum.compilation.repository.CompilationRepository;
 import ru.practicum.event.model.Event;
-import ru.practicum.event.service.EventService;
+import ru.practicum.event.utils.EventUtils;
 
 import java.util.List;
 import java.util.Optional;
@@ -28,14 +28,14 @@ public class CompilationServiceImpl implements CompilationService {
 
     private final CompilationRepository compilationRepository;
 
-    private final EventService eventService;
+    private final EventUtils eventUtils;
 
 
     @Override
     @Transactional
     public CompilationDto createCompilation(NewCompilationDto newCompilation) {
         log.info("Администратор создает новую подборку \"{}\".", newCompilation.getTitle());
-        List<Event> events = eventService.getEventByIds(newCompilation.getEvents());
+        List<Event> events = eventUtils.getEventByIds(newCompilation.getEvents());
         Compilation compilation = compilationRepository.save(CompilationMapper.INSTANT.toCompilation(newCompilation, events));
         log.debug("Администратор создал новую подборку \"{}\" с ID = {}.", compilation.getTitle(), compilation.getId());
         return CompilationMapper.INSTANT.toCompilationDto(compilation);
@@ -46,7 +46,7 @@ public class CompilationServiceImpl implements CompilationService {
     public CompilationDto updateCompilationById(Long compId, UpdateCompilationRequest updatedCompilation) {
         log.info("Администратор обновляет подборку с ID = {}.", compId);
         Compilation compilationOld = getCompilationById(compId);
-        List<Event> events = eventService.getEventByIds(updatedCompilation.getEvents());
+        List<Event> events = eventUtils.getEventByIds(updatedCompilation.getEvents());
         Optional.ofNullable(updatedCompilation.getPinned()).ifPresent(compilationOld::setPinned);
         Optional.ofNullable(updatedCompilation.getTitle()).ifPresent(compilationOld::setTitle);
         if (events != null) {
