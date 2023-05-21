@@ -1,7 +1,7 @@
 package ru.practicum.validation;
 
 import org.springframework.stereotype.Component;
-import ru.practicum.exception.BadRequest;
+//import ru.practicum.exception.BadRequest;
 
 import java.util.regex.Pattern;
 
@@ -21,11 +21,11 @@ public class StatisticValidation {
         }
     }*/
 
-    public void dateIsValid(String date) {
+   /* public void dateIsValid(String date) {
         if (!datePattern.matcher(date).matches()) {
             throw new BadRequest("Невалидная дата. Формат: yyyy-MM-dd HH:mm:ss");
         }
-    }
+    }*/
 
 /*    public void statisticDtoIsValid(EndpointHit endpointHit) {
         //ipIsValid(statisticPostDto.getIp());
