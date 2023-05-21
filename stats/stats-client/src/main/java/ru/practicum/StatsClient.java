@@ -22,12 +22,16 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 public class StatsClient {
 
-        private String serverUrl = "http://stats-server:9090";
+    /*    //Для локального запуска
+    private String serverUrl = "http://localhost:9090";*/
+    private String serverUrl = "http://stats-server:9090";
 
-//    private String serverUrl = "http://localhost:9090";
     private final String appName = "ewm-service";
+
     private final ObjectMapper objectMapper;
+
     private final String start = "2000-01-01 00:00:00";
+
     private final String end = "2100-01-01 00:00:00";
 
     private final RestTemplate restTemplate =  new RestTemplateBuilder()
@@ -45,14 +49,6 @@ public class StatsClient {
         HttpEntity<Object> requestEntity = new HttpEntity<>(hitDto, defaultHeaders());
         restTemplate.exchange(path, HttpMethod.POST, requestEntity, Object.class);
     }
-
-    /*public List<ViewStats> getAllStats(Set<String> uris) {
-        List<String> urisList = new ArrayList<>(uris);
-        StringBuilder path2 = new StringBuilder();
-        path2.append(serverUrl).append("/stats?").append("start=").append(start)
-                .append("&end=").append(end).append("&uris=").append(urisList.get(0));
-        return sendStatsRequest(path2.toString());
-    }*/
 
     private List<ViewStats> sendStatsRequest(String path) {
         ResponseEntity<Object[]> response = restTemplate.getForEntity(path, Object[].class);
@@ -83,4 +79,5 @@ public class StatsClient {
         headers.setAccept(List.of(MediaType.APPLICATION_JSON));
         return headers;
     }
+
 }

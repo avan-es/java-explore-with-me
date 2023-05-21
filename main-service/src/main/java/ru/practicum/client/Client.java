@@ -72,20 +72,4 @@ public class Client {
         return views;
     }
 
-
-/*    private List<ViewStats> getViewsForEvent(Long eventId) {
-        Set<String> uri = new HashSet<>();
-        uri.add("/events/" + eventId);
-        return statisticClient.getAllStats(uri);
-    }
-
-    public Long getViesw(Long eventId) {
-        Set<String> uri = new HashSet<>();
-        uri.add("/events/" + eventId);
-        List<ViewStats> res = statisticClient.getAllStats(uri);
-        return res.get(0).getHits();
-    }*/
-
-
-
 }

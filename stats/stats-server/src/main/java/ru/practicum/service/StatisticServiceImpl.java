@@ -51,4 +51,5 @@ public class StatisticServiceImpl implements StatisticService {
     private LocalDateTime stringToLocalDate(String date) {
         return LocalDateTime.parse(date, DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
     }
+
 }

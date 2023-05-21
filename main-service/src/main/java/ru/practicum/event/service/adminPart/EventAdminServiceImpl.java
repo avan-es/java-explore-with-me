@@ -21,7 +21,6 @@ import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Set;
 
-
 @Service
 @Slf4j
 @RequiredArgsConstructor
@@ -35,7 +34,6 @@ public class EventAdminServiceImpl implements EventAdminService {
     private final EventUtils eventUtils;
 
     private final Client client;
-
 
     @Override
     public List<EventFullDto> getAllEventsByAdmin(
@@ -87,7 +85,5 @@ public class EventAdminServiceImpl implements EventAdminService {
                         eventRepository.save(
                                 eventUtils.updateEvent(eventForUpdate, updateEvent, true))));
     }
-
-
 
 }

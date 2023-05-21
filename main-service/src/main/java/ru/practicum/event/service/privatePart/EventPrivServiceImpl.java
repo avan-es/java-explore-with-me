@@ -53,8 +53,6 @@ public class EventPrivServiceImpl implements EventPrivService {
 
     private final Client client;
 
-
-
     @Override
     @Transactional
     public EventFullDto createEvent(Long userId, NewEventDto newEvent) {
@@ -176,7 +174,6 @@ public class EventPrivServiceImpl implements EventPrivService {
         return eventRequestStatusUpdateResult;
     }
 
-
     void checkRequestBeforeUpdate(Event event, Request request) {
         if (!request.getEvent().getId().equals(event.getId())) {
             throw new BadRequestException("Запрос для другого мероприятия.");
@@ -185,6 +182,5 @@ public class EventPrivServiceImpl implements EventPrivService {
             throw new BadRequestException("Статус запроса отличен от PENDING.");
         }
     }
-
 
 }

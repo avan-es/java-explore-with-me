@@ -8,7 +8,6 @@ import ru.practicum.dto.EndpointHit;
 import ru.practicum.dto.ViewStats;
 import ru.practicum.exception.BadRequest;
 import ru.practicum.service.StatisticService;
-import ru.practicum.validation.StatisticValidation;
 
 import java.util.List;
 import java.util.Map;
@@ -20,8 +19,6 @@ import java.util.Set;
 public class StatisticController {
 
     private final StatisticService statisticService;
-
-    private final StatisticValidation validation;
 
     @PostMapping("/hit")
     @ResponseStatus(HttpStatus.CREATED)
@@ -40,12 +37,9 @@ public class StatisticController {
             log.info("Не заданы обязательные параметры: start и/или end.");
             throw new BadRequest("Не заданы обязательные параметры: start и/или end.");
         }
-   /*     params.put("start", URLDecoder.decode(params.get("start"), StandardCharsets.UTF_8));
-        params.put("end", URLDecoder.decode(params.get("end"), StandardCharsets.UTF_8));*/
-/*        validation.dateIsValid(params.get("start"));
-        validation.dateIsValid(params.get("end"));*/
         log.info("Запрос статистики с параметрами: \n start={} \n end={} \n isUnique={} \n uris={}",
                 params.get("start"), params.get("end"), params.get("unique"), params.get("uris"));
         return statisticService.getStatistic(params, uris);
     }
+
 }
