@@ -22,9 +22,9 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 public class StatsClient {
 
-//        private String serverUrl = "http://stats-server:9090";
+        private String serverUrl = "http://stats-server:9090";
 
-    private String serverUrl = "http://localhost:9090";
+//    private String serverUrl = "http://localhost:9090";
     private final String appName = "ewm-service";
     private final ObjectMapper objectMapper;
     private final String start = "2000-01-01 00:00:00";
