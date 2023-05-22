@@ -12,9 +12,11 @@ import org.springframework.web.util.DefaultUriBuilderFactory;
 import ru.practicum.dto.EndpointHit;
 import ru.practicum.dto.ViewStats;
 
+import java.net.URI;
 import java.net.URLDecoder;
 import java.nio.charset.StandardCharsets;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -22,20 +24,16 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 public class StatsClient {
 
-    /*    //Для локального запуска
-    private String serverUrl = "http://localhost:9090";*/
-    private String serverUrl = "http://stats-server:9090";
+    private URI serverUrl = URI.create("http://stats-server:9090");
 
     private final String appName = "ewm-service";
 
     private final ObjectMapper objectMapper;
 
-    private final String start = "2000-01-01 00:00:00";
-
-    private final String end = "2100-01-01 00:00:00";
+    private final String viewsFromThisDate = "2000-01-01 00:00:00";
 
     private final RestTemplate restTemplate =  new RestTemplateBuilder()
-            .uriTemplateHandler(new DefaultUriBuilderFactory(serverUrl))
+            .uriTemplateHandler(new DefaultUriBuilderFactory(String.valueOf(serverUrl)))
             .requestFactory(HttpComponentsClientHttpRequestFactory::new)
             .build();
 
@@ -52,7 +50,6 @@ public class StatsClient {
 
     private List<ViewStats> sendStatsRequest(String path) {
         ResponseEntity<Object[]> response = restTemplate.getForEntity(path, Object[].class);
-        System.out.println("hi");
         Object[] objects = response.getBody();
         if (objects != null) {
             return Arrays.stream(objects)
@@ -65,8 +62,9 @@ public class StatsClient {
     public List<ViewStats> getViewsByUris(Set<String> uri) {
         List<String> uris = new ArrayList<>(uri);
         URIBuilder path = new URIBuilder().setPath("stats")
-                .addParameter("start", start)
-                .addParameter("end", end);
+                .addParameter("start", viewsFromThisDate)
+                .addParameter("end",
+                        LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")));
         for (String url: uris) {
             path.addParameter("uris", url);
         }

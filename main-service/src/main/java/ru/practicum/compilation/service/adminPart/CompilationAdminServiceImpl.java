@@ -21,7 +21,7 @@ import java.util.Optional;
 @Service
 @Slf4j
 @RequiredArgsConstructor
-@Transactional(readOnly = true)
+@Transactional
 public class CompilationAdminServiceImpl implements CompilationAdminService {
 
     private final CompilationRepository compilationRepository;
@@ -31,7 +31,6 @@ public class CompilationAdminServiceImpl implements CompilationAdminService {
     private final CompilationUtils compilationUtils;
 
     @Override
-    @Transactional
     public CompilationDto createCompilation(NewCompilationDto newCompilation) {
         log.info("Администратор создает новую подборку \"{}\".", newCompilation.getTitle());
         List<Event> events = eventUtils.getEventByIds(newCompilation.getEvents());
@@ -41,7 +40,6 @@ public class CompilationAdminServiceImpl implements CompilationAdminService {
     }
 
     @Override
-    @Transactional
     public CompilationDto updateCompilationById(Long compId, UpdateCompilationRequest updatedCompilation) {
         log.info("Администратор обновляет подборку с ID = {}.", compId);
         Compilation compilationOld = compilationUtils.getCompilationById(compId);
@@ -57,7 +55,6 @@ public class CompilationAdminServiceImpl implements CompilationAdminService {
     }
 
     @Override
-    @Transactional
     public void deleteComplication(Long compId) {
         log.debug("Администратор удаляет подборку с ID = {}.", compId);
         compilationRepository.deleteById(compId);

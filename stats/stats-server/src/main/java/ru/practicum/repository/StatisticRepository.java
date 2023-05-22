@@ -14,7 +14,7 @@ import java.util.Set;
 public interface StatisticRepository  extends JpaRepository<Hit, Long> {
 
     //Просмотры всех uri (не уникальные)
-    @Query("SELECT NEW ru.practicum.dto.ViewStats(s.app, COUNT(s.ip), s.uri) " +
+    @Query("SELECT NEW ru.practicum.dto.ViewStats(s.app, s.uri, COUNT(s.ip)) " +
             "FROM Hit AS s " +
             "WHERE s.timestamp BETWEEN :start AND :end " +
             "GROUP BY s.ip, s.app, s.uri " +
@@ -32,7 +32,7 @@ public interface StatisticRepository  extends JpaRepository<Hit, Long> {
     List<ViewStats> getUrisViewsFromSet(Set<String> uris, LocalDateTime start, LocalDateTime end);
 
     //Просмотры всех uri (уникальные)
-    @Query("SELECT NEW ru.practicum.dto.ViewStats(s.app, COUNT(DISTINCT s.ip), s.uri) " +
+    @Query("SELECT NEW ru.practicum.dto.ViewStats(s.app, s.uri, COUNT(DISTINCT s.ip)) " +
             "FROM Hit s " +
             "WHERE s.timestamp BETWEEN :start AND :end " +
             "GROUP BY s.uri, s.ip, s.app " +

@@ -15,7 +15,7 @@ public interface CategoryRepository extends JpaRepository<Category, Long> {
     @Query(value = "SELECT * " +
             "FROM categories AS c " +
             "WHERE c.category_id = ?1 " +
-            "LIMIT 1", nativeQuery = true)
+            "FETCH FIRST 1 ROWS ONLY ", nativeQuery = true)
     Category getCategoryById(Long catId);
 
     @Query(value = "SELECT * " +

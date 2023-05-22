@@ -15,7 +15,7 @@ import ru.practicum.category.utils.CategoryUtils;
 @Service
 @Slf4j
 @RequiredArgsConstructor
-@Transactional(readOnly = true)
+@Transactional
 public class CategoryAdminServiceImpl implements CategoryAdminService {
 
     private final CategoryRepository categoryRepository;
@@ -23,7 +23,6 @@ public class CategoryAdminServiceImpl implements CategoryAdminService {
     private final CategoryUtils categoryUtils;
 
     @Override
-    @Transactional
     public CategoryDto createCategory(NewCategoryDto newCategory) {
         log.info("Создание новой категории: {}.", newCategory.getName());
         categoryUtils.isCategoryNameIsBusy(newCategory.getName());
@@ -34,7 +33,6 @@ public class CategoryAdminServiceImpl implements CategoryAdminService {
     }
 
     @Override
-    @Transactional
     public CategoryDto patchCategoryById(Long catId, NewCategoryDto updatedCategory) {
         log.info("Обновление категории с ID = {}.", catId);
         categoryUtils.isCategoryNameIsBusy(updatedCategory.getName());
@@ -47,7 +45,6 @@ public class CategoryAdminServiceImpl implements CategoryAdminService {
     }
 
     @Override
-    @Transactional
     public void deleteCategory(Long catId) {
         log.info("Удаление категории с ID = {}.", catId);
         categoryUtils.isCategoryPresent(catId);

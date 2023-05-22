@@ -17,6 +17,7 @@ import java.util.*;
 @Service
 @Slf4j
 @RequiredArgsConstructor
+@Transactional(readOnly = true)
 public class StatisticServiceImpl implements StatisticService {
 
     private final StatisticRepository statisticRepository;
