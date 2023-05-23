@@ -6,7 +6,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import ru.practicum.dto.EndpointHit;
 import ru.practicum.dto.ViewStats;
-import ru.practicum.exception.BadRequest;
 import ru.practicum.service.StatisticService;
 
 import java.util.List;
@@ -31,14 +30,17 @@ public class StatisticController {
     @GetMapping("/stats")
     @ResponseStatus(HttpStatus.OK)
     public List<ViewStats> getStatistic(
-            @RequestParam Map<String, String> params,
+            @RequestParam(value = "start") String start,
+            @RequestParam(value = "end") String end,
+            @RequestParam(value = "unique", defaultValue = "false") String unique,
             @RequestParam(value = "uris", required = false) Set<String> uris) {
-        if (!params.containsKey("start") || !params.containsKey("end")) {
-            log.info("Не заданы обязательные параметры: start и/или end.");
-            throw new BadRequest("Не заданы обязательные параметры: start и/или end.");
-        }
+
         log.info("Запрос статистики с параметрами: \n start={} \n end={} \n isUnique={} \n uris={}",
-                params.get("start"), params.get("end"), params.get("unique"), params.get("uris"));
+                start, end, unique, uris);
+        Map<String, String> params = Map.of(
+                "start", start,
+                "end", end,
+                "unique", unique);
         return statisticService.getStatistic(params, uris);
     }
 

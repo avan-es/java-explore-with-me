@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import ru.practicum.dto.EndpointHit;
 import ru.practicum.dto.ViewStats;
+import ru.practicum.exception.BadRequest;
 import ru.practicum.model.Hit;
 import ru.practicum.model.HitMapper;
 import ru.practicum.repository.StatisticRepository;
@@ -26,6 +27,9 @@ public class StatisticServiceImpl implements StatisticService {
     public List<ViewStats> getStatistic(Map<String, String> params, Set<String> uris) {
         boolean isUnique = params.containsKey("unique") ? Boolean.parseBoolean(params.get("unique")) : false;
         uris = uris == null ? new HashSet<>() : uris;
+        if (stringToLocalDate(params.get("start")).isAfter(stringToLocalDate(params.get("end")))) {
+            throw new BadRequest("Некорректно заданы даты начала и конца. Start не может быть после end.");
+        }
         if (uris.size() > 0 && !isUnique) {
             return statisticRepository.getUrisViewsFromSet(uris, stringToLocalDate(params.get("start")),
                     stringToLocalDate(params.get("end")));
