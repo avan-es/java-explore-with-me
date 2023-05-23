@@ -51,7 +51,7 @@ public class EventPubServiceImpl implements EventPubService {
             booleanExpression = booleanExpression.and(QEvent.event.description.containsIgnoreCase(text)
                     .or(QEvent.event.annotation.containsIgnoreCase(text)));
         }
-        if (categories !=null) {
+        if (categories != null) {
             booleanExpression = booleanExpression.and(QEvent.event.category.id.in(categories));
         }
         if (paid != null) {
