@@ -69,7 +69,7 @@ public class EventUtils {
         );
     }
 
-    public void isEventIsPresent(Long eventId) {
+    public void checkEventIsPresent(Long eventId) {
         eventRepository.findById(eventId).orElseThrow(
                 () -> new NotFoundException("Мероприятие с ID = " + eventId + " не найдено.")
         );
