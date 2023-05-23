@@ -33,7 +33,6 @@ public class UsersServiceImpl implements UsersService {
         log.info("Создание пользователя с именем: {} и почтой: {}.", newUser.getName(),
                 newUser.getEmail().replaceAll("(?<=.{2}).(?=[^@]*?@)", "*"));
         if (!isUserPresentByEmail(newUser.getEmail())) {
-            checkEmailLength(newUser.getEmail());
             User user = usersRepository.save(UserMapper.INSTANT.newUserRequestToUser(newUser));
             log.debug("Пользователь создан. ID = {}.", user.getId());
             return UserMapper.INSTANT.toUserDto(user);
@@ -91,22 +90,6 @@ public class UsersServiceImpl implements UsersService {
         usersRepository.findById(userId).orElseThrow(
                 () -> new NotFoundException("Пользователь с ID = " + userId + " не найден.")
         );
-    }
-
-    private void checkEmailLength(String email) {
-        if (email.length() > 254) {
-            throw new BadRequestException("Дли почты должна быть до 254 символов.");
-        }
-        String[] parts = email.split("@");
-        if (parts.length != 2) {
-            throw new BadRequestException("Некорректный адрес почты.");
-        }
-        if (parts[0].length() > 64 || parts[0].length() < 1) {
-            throw new BadRequestException("Длина почты должна быть от 2 до 64 символов до знака @.");
-        }
-        if (parts[1].length() > 63) {
-            throw new BadRequestException("Длина почты должна быть до 63 символов после знака @.");
-        }
     }
 
 }
