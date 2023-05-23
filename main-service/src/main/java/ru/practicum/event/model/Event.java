@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.WhereJoinTable;
 import org.springframework.format.annotation.DateTimeFormat;
+import ru.practicum.DateConstants;
 import ru.practicum.category.model.Category;
 import ru.practicum.event.enums.EventState;
 import ru.practicum.users.model.User;
@@ -50,7 +51,7 @@ public class Event {
     @Column(name = "published")
     private LocalDateTime  publishedOn;
 
-    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    @DateTimeFormat(pattern = DateConstants.DATE_PATTERN)
     @Column(name = "start_date")
     private LocalDateTime eventDate;
 

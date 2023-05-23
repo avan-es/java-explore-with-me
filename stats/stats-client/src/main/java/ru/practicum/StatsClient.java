@@ -4,6 +4,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.RequiredArgsConstructor;
 import org.apache.http.client.utils.URIBuilder;
 import org.springframework.boot.web.client.RestTemplateBuilder;
+import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.*;
 import org.springframework.http.client.HttpComponentsClientHttpRequestFactory;
 import org.springframework.stereotype.Service;
@@ -16,18 +17,13 @@ import java.net.URI;
 import java.net.URLDecoder;
 import java.nio.charset.StandardCharsets;
 import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.*;
-import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
 public class StatsClient {
 
-    private URI serverUrl = URI.create("http://stats-server:9090");
-
-//    private URI serverUrl = URI.create("http://localhost:9090");
-
+    private final URI serverUrl = URI.create("http://stats-server:9090");
 
     private final String appName = "ewm-service";
 
@@ -52,14 +48,8 @@ public class StatsClient {
     }
 
     private List<ViewStats> sendStatsRequest(String path) {
-        ResponseEntity<Object[]> response = restTemplate.getForEntity(path, Object[].class);
-        Object[] objects = response.getBody();
-        if (objects != null) {
-            return Arrays.stream(objects)
-                    .map(object -> objectMapper.convertValue(object, ViewStats.class))
-                    .collect(Collectors.toList());
-        }
-        return Collections.emptyList();
+        return restTemplate.exchange(path, HttpMethod.GET, null,
+                new ParameterizedTypeReference<List<ViewStats>>() {}).getBody();
     }
 
     public List<ViewStats> getViewsByUris(Set<String> uri) {
@@ -67,7 +57,7 @@ public class StatsClient {
         URIBuilder path = new URIBuilder().setPath("stats")
                 .addParameter("start", viewsFromThisDate)
                 .addParameter("end",
-                        LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")))
+                        LocalDateTime.now().format(DateConstants.DTF))
                 .addParameter("unique", "true");
         for (String url: uris) {
             path.addParameter("uris", url);

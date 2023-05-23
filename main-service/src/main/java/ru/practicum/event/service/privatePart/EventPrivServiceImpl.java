@@ -74,7 +74,7 @@ public class EventPrivServiceImpl implements EventPrivService {
     @Transactional
     public EventFullDto updateEvent(Long userId, Long eventId, UpdateEventRequest updateEvent) {
         if (updateEvent.getCategory() != null) {
-            categoryUtils.isCategoryPresent(updateEvent.getCategory());
+            categoryUtils.checkCategoryPresent(updateEvent.getCategory());
         }
         Event eventForUpdate = eventUtils.getEventById(eventId);
         log.info("Пользователь с ID = {} обновляет мероприятие с ID = {}.", userId, eventId);

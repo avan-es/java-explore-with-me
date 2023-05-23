@@ -72,7 +72,7 @@ public class EventAdminServiceImpl implements EventAdminService {
     @Transactional
     public EventFullDto updateEvent(Long eventId, UpdateEventRequest updateEvent) {
         if (updateEvent.getCategory() != null) {
-            categoryUtils.isCategoryPresent(updateEvent.getCategory());
+            categoryUtils.checkCategoryPresent(updateEvent.getCategory());
         }
         Event eventForUpdate = eventUtils.getEventById(eventId);
         log.info("Администратор обновляет мероприятие с ID = {}.", eventId);

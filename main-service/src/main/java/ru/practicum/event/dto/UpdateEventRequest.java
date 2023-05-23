@@ -3,6 +3,7 @@ package ru.practicum.event.dto;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import io.micrometer.core.lang.Nullable;
 import lombok.*;
+import ru.practicum.DateConstants;
 import ru.practicum.event.dto.location.LocationDto;
 import ru.practicum.event.enums.EventStateAction;
 
@@ -29,7 +30,7 @@ public class UpdateEventRequest {
     private String description;
 
     @Nullable
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss")
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = DateConstants.DATE_PATTERN)
     private LocalDateTime eventDate;
 
     @Nullable

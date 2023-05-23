@@ -26,7 +26,7 @@ public class CategoryAdminServiceImpl implements CategoryAdminService {
     @Override
     public CategoryDto createCategory(NewCategoryDto newCategory) {
         log.info("Создание новой категории: {}.", newCategory.getName());
-        categoryUtils.isCategoryNameIsBusy(newCategory.getName());
+        categoryUtils.checkCategoryNameIsBusy(newCategory.getName());
         Category category = categoryRepository.save(
                 CategoryMapper.INSTANT.newCategoryDtoToCategory(newCategory));
         log.debug("Категория создана. ID = {}.", category.getId());
@@ -36,7 +36,7 @@ public class CategoryAdminServiceImpl implements CategoryAdminService {
     @Override
     public CategoryDto patchCategoryById(Long catId, NewCategoryDto updatedCategory) {
         log.info("Обновление категории с ID = {}.", catId);
-        categoryUtils.isCategoryPresent(catId);
+        categoryUtils.checkCategoryPresent(catId);
         Category categoryById = categoryRepository.getCategoryById(catId);
         Category categoryByName = categoryRepository.findFirstByName(updatedCategory.getName());
         if (categoryByName != null) {
@@ -53,8 +53,8 @@ public class CategoryAdminServiceImpl implements CategoryAdminService {
     @Override
     public void deleteCategory(Long catId) {
         log.info("Удаление категории с ID = {}.", catId);
-        categoryUtils.isCategoryPresent(catId);
-        categoryUtils.isCategoryUsing(catId);
+        categoryUtils.checkCategoryPresent(catId);
+        categoryUtils.checkCategoryUsing(catId);
         categoryRepository.deleteById(catId);
         log.debug("Категории с ID = {} удалена.", catId);
     }

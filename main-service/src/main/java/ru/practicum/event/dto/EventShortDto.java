@@ -3,6 +3,7 @@ package ru.practicum.event.dto;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Builder;
 import lombok.Data;
+import ru.practicum.DateConstants;
 import ru.practicum.category.dto.CategoryDto;
 import ru.practicum.users.dto.UserShortDto;
 
@@ -18,7 +19,7 @@ public class EventShortDto {
 
     private Integer confirmedRequests;
 
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss")
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = DateConstants.DATE_PATTERN)
     private LocalDateTime eventDate;
 
     private Long id;

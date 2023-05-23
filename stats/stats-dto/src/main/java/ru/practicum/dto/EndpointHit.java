@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import ru.practicum.DateConstants;
 
 import javax.validation.constraints.NotBlank;
 import java.time.LocalDateTime;
@@ -25,7 +26,7 @@ public class EndpointHit {
     private String ip;
 
     @NotBlank
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss")
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = DateConstants.DATE_PATTERN)
     private LocalDateTime timestamp;
 
 }

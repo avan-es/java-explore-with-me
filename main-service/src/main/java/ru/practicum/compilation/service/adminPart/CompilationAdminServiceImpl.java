@@ -46,17 +46,15 @@ public class CompilationAdminServiceImpl implements CompilationAdminService {
     @Override
     public CompilationDto updateCompilationById(Long compId, UpdateCompilationRequest updatedCompilation) {
         log.info("Администратор обновляет подборку с ID = {}.", compId);
-        Compilation compilationOld = compilationUtils.getCompilationById(compId);
+        Compilation compilationForUpdate = compilationUtils.getCompilationById(compId);
         List<Event> events = new ArrayList<>();
         if (updatedCompilation.getEvents() != null) {
             events = eventUtils.getEventByIds(updatedCompilation.getEvents());
         }
-        Optional.ofNullable(updatedCompilation.getPinned()).ifPresent(compilationOld::setPinned);
-        Optional.ofNullable(updatedCompilation.getTitle()).ifPresent(compilationOld::setTitle);
-        if (events != null) {
-            compilationOld.setEvents(events);
-        }
-        Compilation compilation = compilationRepository.save(CompilationMapper.INSTANT.toCompilation(compilationOld, events));
+        Optional.ofNullable(updatedCompilation.getPinned()).ifPresent(compilationForUpdate::setPinned);
+        Optional.ofNullable(updatedCompilation.getTitle()).ifPresent(compilationForUpdate::setTitle);
+        Optional.ofNullable(events).ifPresent(compilationForUpdate::setEvents);
+        Compilation compilation = compilationRepository.save(CompilationMapper.INSTANT.toCompilation(compilationForUpdate, events));
         log.debug("Администратор обновил подборку \"{}\" с ID = {}.", compilation.getTitle(), compilation.getId());
             return CompilationMapper.INSTANT.toCompilationDto(compilation);
     }
