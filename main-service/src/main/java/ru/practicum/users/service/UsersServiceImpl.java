@@ -101,7 +101,7 @@ public class UsersServiceImpl implements UsersService {
         if (parts.length != 2) {
             throw new BadRequestException("Некорректный адрес почты.");
         }
-        if (parts[0].length() > 64 || parts[0].length() < 2) {
+        if (parts[0].length() > 64 || parts[0].length() < 1) {
             throw new BadRequestException("Длина почты должна быть от 2 до 64 символов до знака @.");
         }
         if (parts[1].length() > 63) {
