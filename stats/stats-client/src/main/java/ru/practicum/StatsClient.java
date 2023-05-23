@@ -24,9 +24,9 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 public class StatsClient {
 
-//    private URI serverUrl = URI.create("http://stats-server:9090");
+    private URI serverUrl = URI.create("http://stats-server:9090");
 
-    private URI serverUrl = URI.create("http://localhost:9090");
+//    private URI serverUrl = URI.create("http://localhost:9090");
 
 
     private final String appName = "ewm-service";
