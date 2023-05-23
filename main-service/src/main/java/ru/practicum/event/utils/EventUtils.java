@@ -30,7 +30,7 @@ public class EventUtils {
     public void checkIfEvenDateCorrect(LocalDateTime evenDate) {
         if (LocalDateTime.now().plusHours(2).isAfter(evenDate)) {
             log.error("Некорректная дата начала мероприятия. (Меньше 2-х часов до начала).");
-            throw new ConflictException("Некорректная дата начала мероприятия. (Меньше 2-х часов до начала).");
+            throw new BadRequestException("Некорректная дата начала мероприятия. (Меньше 2-х часов до начала).");
         }
     }
 
@@ -93,11 +93,12 @@ public class EventUtils {
         Optional.ofNullable(updateEventRequest.getParticipantLimit()).ifPresent(updatedEvent::setParticipantLimit);
         Optional.ofNullable(updateEventRequest.getRequestModeration()).ifPresent(updatedEvent::setRequestModeration);
         if (isAdmin) {
-            if (updateEventRequest.getStateAction() != null
-                    && updatedEvent.getState().equals(EventState.PENDING)) {
-                setEventStateByEventStateAction(updatedEvent, updateEventRequest.getStateAction());
-            } else {
-                throw new ConflictException("Мероприятие с ID = " + updatedEvent.getId() + " уже опубликовано/отменено.");
+            if (updateEventRequest.getStateAction() != null) {
+                if (updatedEvent.getState().equals(EventState.PENDING)) {
+                    setEventStateByEventStateAction(updatedEvent, updateEventRequest.getStateAction());
+                } else {
+                    throw new ConflictException("Мероприятие с ID = " + updatedEvent.getId() + " уже опубликовано/отменено.");
+                }
             }
         } else {
             Optional.ofNullable(updateEventRequest.getStateAction()).ifPresent(

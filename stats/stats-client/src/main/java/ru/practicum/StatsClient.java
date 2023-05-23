@@ -24,7 +24,10 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 public class StatsClient {
 
-    private URI serverUrl = URI.create("http://stats-server:9090");
+//    private URI serverUrl = URI.create("http://stats-server:9090");
+
+    private URI serverUrl = URI.create("http://localhost:9090");
+
 
     private final String appName = "ewm-service";
 
@@ -64,7 +67,8 @@ public class StatsClient {
         URIBuilder path = new URIBuilder().setPath("stats")
                 .addParameter("start", viewsFromThisDate)
                 .addParameter("end",
-                        LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")));
+                        LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")))
+                .addParameter("unique", "true");
         for (String url: uris) {
             path.addParameter("uris", url);
         }

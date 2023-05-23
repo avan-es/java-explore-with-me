@@ -54,4 +54,8 @@ public class CategoryUtils {
         }
     }
 
+    public Category getCategoryByName(String name) {
+        return categoryRepository.findFirstByName(name);
+    }
+
 }

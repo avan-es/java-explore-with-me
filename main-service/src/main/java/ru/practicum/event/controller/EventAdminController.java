@@ -35,7 +35,7 @@ public class EventAdminController {
             @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss") LocalDateTime rangeStart,
             @RequestParam(required = false)
             @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss") LocalDateTime rangeEnd,
-            @PositiveOrZero @RequestParam(value = "from", defaultValue = "0") Integer from,
+            @PositiveOrZero @RequestParam(value = "from", defaultValue = "1") Integer from,
             @Positive @RequestParam(value = "size", defaultValue = "10") Integer size) {
         users = users == null ? new HashSet<>() : users;
         states = states == null ? new HashSet<>() : states;

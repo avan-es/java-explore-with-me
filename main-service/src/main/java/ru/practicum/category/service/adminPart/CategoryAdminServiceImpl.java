@@ -4,6 +4,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import ru.practicum.ApiError.exception.ConflictException;
 import ru.practicum.category.dto.CategoryDto;
 import ru.practicum.category.dto.NewCategoryDto;
 import ru.practicum.category.model.Category;
@@ -35,13 +36,18 @@ public class CategoryAdminServiceImpl implements CategoryAdminService {
     @Override
     public CategoryDto patchCategoryById(Long catId, NewCategoryDto updatedCategory) {
         log.info("Обновление категории с ID = {}.", catId);
-        categoryUtils.isCategoryNameIsBusy(updatedCategory.getName());
         categoryUtils.isCategoryPresent(catId);
-        Category category = categoryRepository.getCategoryById(catId);
-        category.setName(updatedCategory.getName());
-        categoryRepository.save(category);
+        Category categoryById = categoryRepository.getCategoryById(catId);
+        Category categoryByName = categoryRepository.findFirstByName(updatedCategory.getName());
+        if (categoryByName != null) {
+            if (!categoryByName.getId().equals(categoryById.getId())) {
+                throw new ConflictException("Категория уже существует.");
+            }
+        }
+        categoryById.setName(updatedCategory.getName());
+        categoryRepository.save(categoryById);
         log.debug("Категория с ID = {} обновлена.", catId);
-        return CategoryMapper.INSTANT.toCategoryDto(category);
+        return CategoryMapper.INSTANT.toCategoryDto(categoryById);
     }
 
     @Override

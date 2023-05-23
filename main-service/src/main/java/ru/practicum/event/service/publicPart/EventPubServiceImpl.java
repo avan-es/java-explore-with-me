@@ -46,30 +46,22 @@ public class EventPubServiceImpl implements EventPubService {
                         "text = {}, categories = {}, paid = {}, rangeStart = {}, rangeEnd = {}, onlyAvailable = {}, " +
                         "sort = {}, from = {}, size = {}.",
                 text, categories, paid, rangeStart, rangeEnd, onlyAvailable, sort, from, size);
-
-        BooleanExpression byPaid = QEvent.event.paid.eq(paid);
-        BooleanExpression byDate = QEvent.event.eventDate.between(rangeStart, rangeEnd);
-        BooleanExpression byCategories;
-        BooleanExpression byAnnotation;
-        BooleanExpression byDescription;
-        BooleanExpression byState = QEvent.event.state.eq(EventState.PUBLISHED);
-        int page = from / size;
-        Pageable pageable = PageRequest.of(page, size);
-        if (categories.isEmpty()) {
-            byCategories = QEvent.event.category.id.notIn(categories);
-        } else {
-            byCategories = QEvent.event.category.id.in(categories);
-        }
-        Page<Event> eventsPage;
+        BooleanExpression booleanExpression = QEvent.event.state.eq(EventState.PUBLISHED);
         if (text != null) {
-            byAnnotation = QEvent.event.annotation.likeIgnoreCase("%" + text + "%");
-            byDescription = QEvent.event.description.likeIgnoreCase("%" + text + "%");
-            eventsPage = eventRepository.findAll(
-                    byAnnotation.or(byDescription).and(byPaid).and(byDate).and(byCategories).and(byState), pageable);
-        } else {
-            eventsPage = eventRepository.findAll(
-                    byPaid.and(byDate).and(byCategories).and(byState), pageable);
+            booleanExpression = booleanExpression.and(QEvent.event.description.containsIgnoreCase(text)
+                    .or(QEvent.event.annotation.containsIgnoreCase(text)));
         }
+        if (categories !=null) {
+            booleanExpression = booleanExpression.and(QEvent.event.category.id.in(categories));
+        }
+        if (paid != null) {
+            booleanExpression = booleanExpression.and(QEvent.event.paid.eq(paid));
+        }
+        booleanExpression = booleanExpression.and(QEvent.event.eventDate.between(rangeStart, rangeEnd));
+        Integer page = from / size;
+        Pageable pageable = PageRequest.of(page, size);
+        Page<Event> eventsPage;
+        eventsPage = eventRepository.findAll(booleanExpression, pageable);
         List<Event> events = eventsPage.getContent();
         if (onlyAvailable) {
             events.removeIf(event -> event.getParticipants().size() == event.getParticipantLimit());

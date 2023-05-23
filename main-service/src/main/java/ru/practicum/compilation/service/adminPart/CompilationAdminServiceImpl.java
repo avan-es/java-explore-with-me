@@ -14,6 +14,7 @@ import ru.practicum.compilation.utils.CompilationUtils;
 import ru.practicum.event.model.Event;
 import ru.practicum.event.utils.EventUtils;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -33,7 +34,10 @@ public class CompilationAdminServiceImpl implements CompilationAdminService {
     @Override
     public CompilationDto createCompilation(NewCompilationDto newCompilation) {
         log.info("Администратор создает новую подборку \"{}\".", newCompilation.getTitle());
-        List<Event> events = eventUtils.getEventByIds(newCompilation.getEvents());
+        List<Event> events = new ArrayList<>();
+        if (newCompilation.getEvents() != null) {
+            events = eventUtils.getEventByIds(newCompilation.getEvents());
+        }
         Compilation compilation = compilationRepository.save(CompilationMapper.INSTANT.toCompilation(newCompilation, events));
         log.debug("Администратор создал новую подборку \"{}\" с ID = {}.", compilation.getTitle(), compilation.getId());
         return CompilationMapper.INSTANT.toCompilationDto(compilation);
@@ -43,7 +47,10 @@ public class CompilationAdminServiceImpl implements CompilationAdminService {
     public CompilationDto updateCompilationById(Long compId, UpdateCompilationRequest updatedCompilation) {
         log.info("Администратор обновляет подборку с ID = {}.", compId);
         Compilation compilationOld = compilationUtils.getCompilationById(compId);
-        List<Event> events = eventUtils.getEventByIds(updatedCompilation.getEvents());
+        List<Event> events = new ArrayList<>();
+        if (updatedCompilation.getEvents() != null) {
+            events = eventUtils.getEventByIds(updatedCompilation.getEvents());
+        }
         Optional.ofNullable(updatedCompilation.getPinned()).ifPresent(compilationOld::setPinned);
         Optional.ofNullable(updatedCompilation.getTitle()).ifPresent(compilationOld::setTitle);
         if (events != null) {

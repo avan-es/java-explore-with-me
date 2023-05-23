@@ -4,6 +4,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
+import ru.practicum.ApiError.exception.BadRequestException;
 import ru.practicum.event.dto.EventFullDto;
 import ru.practicum.event.dto.EventShortDto;
 import ru.practicum.event.enums.EventSort;
@@ -30,7 +31,7 @@ public class EventPublicController {
     public List<EventShortDto> getEventsPubic(
             @RequestParam(required = false) String text,
             @RequestParam(required = false) Set<Long> categories,
-            @RequestParam(defaultValue = "false") Boolean paid,
+            @RequestParam(required = false) Boolean paid,
             @RequestParam(required = false)
             @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss") LocalDateTime rangeStart,
             @RequestParam(required = false)
@@ -43,6 +44,9 @@ public class EventPublicController {
         categories = categories == null ? new HashSet<>() : categories;
         rangeStart = rangeStart == null ? LocalDateTime.now() : rangeStart;
         rangeEnd = rangeEnd == null ? rangeStart.plusYears(100) : rangeEnd;
+        if (rangeStart.isAfter(rangeEnd)) {
+            throw new BadRequestException("Неправильно задан временной отрезок. (rangeStart is after rangeEnd).");
+        }
         return eventService.getEventsByPublic(
                 text, categories, paid, rangeStart, rangeEnd, onlyAvailable, sort, from, size, request);
     }

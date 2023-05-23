@@ -1,5 +1,6 @@
 package ru.practicum.compilation.service.publicPart;
 
+import io.micrometer.core.lang.Nullable;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Page;
@@ -32,11 +33,16 @@ public class CompilationPubServiceImpl implements CompilationPubService {
     }
 
     @Override
-    public List<CompilationDto> getComplicationsPublic(Boolean pinned, Integer from, Integer size) {
+    public List<CompilationDto> getComplicationsPublic(@Nullable Boolean pinned, Integer from, Integer size) {
         int page = from / size;
         PageRequest pageRequest = PageRequest.of(page, size);
         log.info("Выгрузка списка подборок с параметрами: pinned = {}, size={}, from={}.",pinned, size, page);
-        Page<Compilation> pageCompilation = compilationRepository.findAllByPinned(pinned, pageRequest);
+        Page<Compilation> pageCompilation;
+        if (pinned != null) {
+            pageCompilation = compilationRepository.findAllByPinned(pinned, pageRequest);
+        } else {
+            pageCompilation = compilationRepository.findAll(pageRequest);
+        }
         List<Compilation> requests = pageCompilation.getContent();
         return CompilationMapper.INSTANT.toCompilationDto(requests);
     }

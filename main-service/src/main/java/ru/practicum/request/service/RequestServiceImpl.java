@@ -42,30 +42,22 @@ public class RequestServiceImpl implements RequestService {
         log.info("Создание запроса на участие в мероприятии с ID = {} от пользователя с ID = {}.", eventId, userId);
         Event event = eventUtils.getEventById(eventId);
         User user = usersService.getUserById(userId);
-        Request participantsRequests = requestRepository.findByUserIdAndEventId(userId, eventId);
-        if (participantsRequests != null/*event.getParticipants().contains(user)*/) {
+        Boolean isUnlimited = event.getParticipantLimit().equals(0);
+        checkUserAndEvent(user, event, isUnlimited);
+        Request participantsRequests = requestRepository.findFirstByRequesterIdAndEventId(userId, eventId);
+        if (participantsRequests != null) {
             log.error("Запрос на участие от пользователя с ID = {} уже существует.", userId);
             throw new ConflictException("Вы уже отправляли запрос на участие.");
         }
-        if (event.getInitiator().getId().equals(userId)) {
-            log.error("Попытка зарегистрироваться в своём же мероприятии. Пользователь с ID = {}, мероприятие с ID = {}.",
-                    userId, eventId);
-            throw new ConflictException("Организатору не нужно регистрироваться для участия в мероприятии.");
-        }
-        if (!event.getState().equals(EventState.PUBLISHED)) {
-            log.error("Мероприятие с ID = {} ещё не опубликовано. Текущий статус: \"{}\".",
-                    eventId, event.getState());
-            throw new ConflictException("Регистрация возможна только в опубликованных мероприятиях.");
-        }
-        if (!event.getParticipantLimit().equals(0) && event.getParticipants().size() >= event.getParticipantLimit()) {
-            log.error("Нет свободных мест на мероприятие с ID = {} нет.", eventId);
-            throw new ConflictException("Нет свободных мест на мероприятие.");
+        RequestStatus requestStatus = RequestStatus.CONFIRMED;
+        if (event.getRequestModeration() && !event.getParticipantLimit().equals(0)) {
+            requestStatus = RequestStatus.PENDING;
         }
         Request request = requestRepository.save(Request
                 .builder()
                 .created(LocalDateTime.now())
                 .requester(user)
-                .status((event.getRequestModeration()) ? RequestStatus.PENDING : RequestStatus.CONFIRMED)
+                .status(requestStatus)
                 .event(event)
                 .build());
         log.debug("Запрос на участие в мероприятии с ID = {} от пользователя с ID = {} создан под ID = {}.",
@@ -100,6 +92,26 @@ public class RequestServiceImpl implements RequestService {
         return requestRepository.findById(requestId).orElseThrow(
                 () -> new NotFoundException("Запрос на участие с ID = " + requestId + " не найден.")
         );
+    }
+
+    private void checkUserAndEvent(User user, Event event, Boolean isUnlimited) {
+        if (event.getInitiator().getId().equals(user.getId())) {
+            log.error("Попытка зарегистрироваться в своём же мероприятии. Пользователь с ID = {}, мероприятие с ID = {}.",
+                    user.getId(), event.getId());
+            throw new ConflictException("Организатору не нужно регистрироваться для участия в мероприятии.");
+        }
+        if (!event.getState().equals(EventState.PUBLISHED)) {
+            log.error("Мероприятие с ID = {} ещё не опубликовано. Текущий статус: \"{}\".",
+                    event.getId(), event.getState());
+            throw new ConflictException("Регистрация возможна только в опубликованных мероприятиях.");
+        }
+        if (!isUnlimited) {
+            if (requestRepository.getByEventIdAndStatus(event.getId(), RequestStatus.CONFIRMED).size() ==
+                    event.getParticipantLimit()) {
+                log.error("Нет свободных мест на мероприятие с ID = {} нет.", event.getId());
+                throw new ConflictException("Нет свободных мест на мероприятие.");
+            }
+        }
     }
 
 }
