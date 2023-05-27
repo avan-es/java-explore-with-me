@@ -10,7 +10,7 @@
 			"name": "SetUp",
 			"item": [
 				{
-					"name": "Добавить категорию",
+					"name": "Добавить категорию 120",
 					"request": {
 						"method": "POST",
 						"header": [],
@@ -39,7 +39,7 @@
 					"response": []
 				},
 				{
-					"name": "Добавить User 1",
+					"name": "Добавить User 135",
 					"request": {
 						"method": "POST",
 						"header": [],
@@ -68,7 +68,7 @@
 					"response": []
 				},
 				{
-					"name": "Добавить User 2",
+					"name": "Добавить User 136",
 					"request": {
 						"method": "POST",
 						"header": [],
@@ -97,7 +97,7 @@
 					"response": []
 				},
 				{
-					"name": "Добавить User 3",
+					"name": "Добавить User 137",
 					"request": {
 						"method": "POST",
 						"header": [],
@@ -126,7 +126,7 @@
 					"response": []
 				},
 				{
-					"name": "Добавить User 4",
+					"name": "Добавить User 138",
 					"request": {
 						"method": "POST",
 						"header": [],
@@ -155,7 +155,7 @@
 					"response": []
 				},
 				{
-					"name": "Добавить Event 1 by User 1",
+					"name": "Добавить Event 106 by User 135",
 					"request": {
 						"method": "POST",
 						"header": [],
@@ -169,7 +169,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8080/users/1/events",
+							"raw": "http://localhost:8080/users/135/events",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -177,7 +177,7 @@
 							"port": "8080",
 							"path": [
 								"users",
-								"1",
+								"135",
 								"events"
 							]
 						}
@@ -185,7 +185,7 @@
 					"response": []
 				},
 				{
-					"name": "Admin published Event 1",
+					"name": "Admin published Event 106",
 					"request": {
 						"method": "PATCH",
 						"header": [],
@@ -199,7 +199,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8080/admin/events/1",
+							"raw": "http://localhost:8080/admin/events/106",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -208,19 +208,19 @@
 							"path": [
 								"admin",
 								"events",
-								"1"
+								"106"
 							]
 						}
 					},
 					"response": []
 				},
 				{
-					"name": "Add request from user 2 to 1 event",
+					"name": "Add request from user 136 to 106 event",
 					"request": {
 						"method": "POST",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8080/users/2/requests?eventId=1",
+							"raw": "http://localhost:8080/users/136/requests?eventId=106",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -228,13 +228,13 @@
 							"port": "8080",
 							"path": [
 								"users",
-								"2",
+								"136",
 								"requests"
 							],
 							"query": [
 								{
 									"key": "eventId",
-									"value": "1"
+									"value": "106"
 								}
 							]
 						}
@@ -242,12 +242,12 @@
 					"response": []
 				},
 				{
-					"name": "Add request from user 3 to 1 event",
+					"name": "Add request from user 137 to 106 event",
 					"request": {
 						"method": "POST",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8080/users/3/requests?eventId=1",
+							"raw": "http://localhost:8080/users/137/requests?eventId=106",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -255,13 +255,13 @@
 							"port": "8080",
 							"path": [
 								"users",
-								"3",
+								"137",
 								"requests"
 							],
 							"query": [
 								{
 									"key": "eventId",
-									"value": "1"
+									"value": "106"
 								}
 							]
 						}
@@ -269,7 +269,7 @@
 					"response": []
 				},
 				{
-					"name": "Добавить Event 2 by User 1",
+					"name": "Добавить Event 107 by User 135",
 					"request": {
 						"method": "POST",
 						"header": [],
@@ -283,7 +283,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8080/users/1/events",
+							"raw": "http://localhost:8080/users/135/events",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -291,7 +291,7 @@
 							"port": "8080",
 							"path": [
 								"users",
-								"1",
+								"135",
 								"events"
 							]
 						}
@@ -299,7 +299,7 @@
 					"response": []
 				},
 				{
-					"name": "Admin published Event 2",
+					"name": "Admin published Event 107",
 					"request": {
 						"method": "PATCH",
 						"header": [],
@@ -313,7 +313,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8080/admin/events/2",
+							"raw": "http://localhost:8080/admin/events/107",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -322,19 +322,19 @@
 							"path": [
 								"admin",
 								"events",
-								"2"
+								"107"
 							]
 						}
 					},
 					"response": []
 				},
 				{
-					"name": "Add request from user 2 to 2 event",
+					"name": "Add request from user 136 to 107 event",
 					"request": {
 						"method": "POST",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8080/users/2/requests?eventId=2",
+							"raw": "http://localhost:8080/users/136/requests?eventId=107",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -342,13 +342,13 @@
 							"port": "8080",
 							"path": [
 								"users",
-								"2",
+								"136",
 								"requests"
 							],
 							"query": [
 								{
 									"key": "eventId",
-									"value": "2"
+									"value": "107"
 								}
 							]
 						}
@@ -356,7 +356,7 @@
 					"response": []
 				},
 				{
-					"name": "Добавить Event 3 by User 1",
+					"name": "Добавить Event 108 by User 135",
 					"request": {
 						"method": "POST",
 						"header": [],
@@ -370,7 +370,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8080/users/1/events",
+							"raw": "http://localhost:8080/users/135/events",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -378,7 +378,7 @@
 							"port": "8080",
 							"path": [
 								"users",
-								"1",
+								"135",
 								"events"
 							]
 						}
@@ -386,7 +386,7 @@
 					"response": []
 				},
 				{
-					"name": "Admin published Event 3",
+					"name": "Admin published Event 108",
 					"request": {
 						"method": "PATCH",
 						"header": [],
@@ -400,7 +400,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8080/admin/events/3",
+							"raw": "http://localhost:8080/admin/events/108",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -409,19 +409,19 @@
 							"path": [
 								"admin",
 								"events",
-								"3"
+								"108"
 							]
 						}
 					},
 					"response": []
 				},
 				{
-					"name": "Add request from user 2 to 3 event",
+					"name": "Add request from user 136 to 108 event",
 					"request": {
 						"method": "POST",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8080/users/2/requests?eventId=3",
+							"raw": "http://localhost:8080/users/136/requests?eventId=108",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -429,13 +429,13 @@
 							"port": "8080",
 							"path": [
 								"users",
-								"2",
+								"136",
 								"requests"
 							],
 							"query": [
 								{
 									"key": "eventId",
-									"value": "3"
+									"value": "108"
 								}
 							]
 						}
@@ -443,7 +443,7 @@
 					"response": []
 				},
 				{
-					"name": "Добавить Event 4 by User 1",
+					"name": "Добавить Event 109 by User 135",
 					"request": {
 						"method": "POST",
 						"header": [],
@@ -457,7 +457,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8080/users/1/events",
+							"raw": "http://localhost:8080/users/135/events",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -465,7 +465,7 @@
 							"port": "8080",
 							"path": [
 								"users",
-								"1",
+								"135",
 								"events"
 							]
 						}
@@ -473,7 +473,7 @@
 					"response": []
 				},
 				{
-					"name": "Admin published Event 4",
+					"name": "Admin published Event 109",
 					"request": {
 						"method": "PATCH",
 						"header": [],
@@ -487,7 +487,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8080/admin/events/4",
+							"raw": "http://localhost:8080/admin/events/109",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -496,19 +496,19 @@
 							"path": [
 								"admin",
 								"events",
-								"4"
+								"109"
 							]
 						}
 					},
 					"response": []
 				},
 				{
-					"name": "Add request from user 2 to 4 event",
+					"name": "Add request from user 136 to 109 event",
 					"request": {
 						"method": "POST",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8080/users/2/requests?eventId=4",
+							"raw": "http://localhost:8080/users/136/requests?eventId=109",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -516,13 +516,13 @@
 							"port": "8080",
 							"path": [
 								"users",
-								"2",
+								"136",
 								"requests"
 							],
 							"query": [
 								{
 									"key": "eventId",
-									"value": "4"
+									"value": "109"
 								}
 							]
 						}
@@ -535,7 +535,7 @@
 			"name": "Private Part",
 			"item": [
 				{
-					"name": "Add comment by user 2 - FAIL - length < 10",
+					"name": "Add comment by user 136 - FAIL - length < 10",
 					"event": [
 						{
 							"listen": "test",
@@ -564,7 +564,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8080/user/2/event/1/comments",
+							"raw": "http://localhost:8080/user/136/event/106/comments",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -572,9 +572,9 @@
 							"port": "8080",
 							"path": [
 								"user",
-								"2",
+								"136",
 								"event",
-								"1",
+								"106",
 								"comments"
 							]
 						}
@@ -582,7 +582,7 @@
 					"response": []
 				},
 				{
-					"name": "Add comment by user 2 - OK - length == 10 Copy",
+					"name": "Add comment by user 136 - OK - length == 10 Copy",
 					"event": [
 						{
 							"listen": "test",
@@ -599,16 +599,16 @@
 									"    pm.expect(jsonData).to.have.property('id');\r",
 									"});\r",
 									"\r",
-									"pm.test(\"Тело должно иметь поле 'eventId' = 1\", function () {\r",
+									"pm.test(\"Тело должно иметь поле 'eventId' = 106\", function () {\r",
 									"    var jsonData = pm.response.json();\r",
 									"    pm.expect(jsonData).to.have.property('eventId');\r",
-									"    pm.expect(jsonData.start, '\"eventId\"  must be \"1\"' + pm.environment.get('eventId') + '\"').to.eql(pm.environment.get('eventId'));\r",
+									"    pm.expect(jsonData.start, '\"eventId\"  must be \"106\"' + pm.environment.get('eventId') + '\"').to.eql(pm.environment.get('eventId'));\r",
 									"});\r",
 									"\r",
-									"pm.test(\"Тело должно иметь поле 'userId' = 2\", function () {\r",
+									"pm.test(\"Тело должно иметь поле 'userId' = 136\", function () {\r",
 									"    var jsonData = pm.response.json();\r",
 									"    pm.expect(jsonData).to.have.property('userId');\r",
-									"    pm.expect(jsonData.start, '\"userId\"  must be \"2\"' + pm.environment.get('userId') + '\"').to.eql(pm.environment.get('userId'));\r",
+									"    pm.expect(jsonData.start, '\"userId\"  must be \"136\"' + pm.environment.get('userId') + '\"').to.eql(pm.environment.get('userId'));\r",
 									"});\r",
 									"\r",
 									"pm.test(\"Тело должно иметь поле 'comment'\", function () {\r",
@@ -639,7 +639,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8080/user/2/event/1/comments",
+							"raw": "http://localhost:8080/user/136/event/106/comments",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -647,9 +647,9 @@
 							"port": "8080",
 							"path": [
 								"user",
-								"2",
+								"136",
 								"event",
-								"1",
+								"106",
 								"comments"
 							]
 						}
@@ -657,7 +657,7 @@
 					"response": []
 				},
 				{
-					"name": "Add comment by user 3 - FAIL - length > 2000",
+					"name": "Add comment by user 137 - FAIL - length > 2000",
 					"event": [
 						{
 							"listen": "test",
@@ -686,7 +686,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8080/user/3/event/1/comments",
+							"raw": "http://localhost:8080/user/137/event/106/comments",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -694,9 +694,9 @@
 							"port": "8080",
 							"path": [
 								"user",
-								"3",
+								"137",
 								"event",
-								"1",
+								"106",
 								"comments"
 							]
 						}
@@ -704,7 +704,7 @@
 					"response": []
 				},
 				{
-					"name": "Add comment by user 3 - OK - length == 2000",
+					"name": "Add comment by user 137 - OK - length == 2000",
 					"event": [
 						{
 							"listen": "test",
@@ -721,16 +721,16 @@
 									"    pm.expect(jsonData).to.have.property('id');\r",
 									"});\r",
 									"\r",
-									"pm.test(\"Тело должно иметь поле 'eventId' = 1\", function () {\r",
+									"pm.test(\"Тело должно иметь поле 'eventId' = 106\", function () {\r",
 									"    var jsonData = pm.response.json();\r",
 									"    pm.expect(jsonData).to.have.property('eventId');\r",
-									"    pm.expect(jsonData.start, '\"eventId\"  must be \"1\"' + pm.environment.get('eventId') + '\"').to.eql(pm.environment.get('eventId'));\r",
+									"    pm.expect(jsonData.start, '\"eventId\"  must be \"106\"' + pm.environment.get('eventId') + '\"').to.eql(pm.environment.get('eventId'));\r",
 									"});\r",
 									"\r",
-									"pm.test(\"Тело должно иметь поле 'userId' = 3\", function () {\r",
+									"pm.test(\"Тело должно иметь поле 'userId' = 137\", function () {\r",
 									"    var jsonData = pm.response.json();\r",
 									"    pm.expect(jsonData).to.have.property('userId');\r",
-									"    pm.expect(jsonData.start, '\"userId\"  must be \"3\"' + pm.environment.get('userId') + '\"').to.eql(pm.environment.get('userId'));\r",
+									"    pm.expect(jsonData.start, '\"userId\"  must be \"137\"' + pm.environment.get('userId') + '\"').to.eql(pm.environment.get('userId'));\r",
 									"});\r",
 									"\r",
 									"pm.test(\"Тело должно иметь поле 'comment'\", function () {\r",
@@ -761,7 +761,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8080/user/3/event/1/comments",
+							"raw": "http://localhost:8080/user/137/event/106/comments",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -769,9 +769,9 @@
 							"port": "8080",
 							"path": [
 								"user",
-								"3",
+								"137",
 								"event",
-								"1",
+								"106",
 								"comments"
 							]
 						}
@@ -779,7 +779,7 @@
 					"response": []
 				},
 				{
-					"name": "Patch comment by user 3 - FAIL - not owner",
+					"name": "Patch comment by user 137 - FAIL - not owner",
 					"event": [
 						{
 							"listen": "test",
@@ -814,7 +814,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8080/user/3/comments/1",
+							"raw": "http://localhost:8080/user/137/comments/1",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -822,7 +822,7 @@
 							"port": "8080",
 							"path": [
 								"user",
-								"3",
+								"137",
 								"comments",
 								"1"
 							]
@@ -831,7 +831,7 @@
 					"response": []
 				},
 				{
-					"name": "Patch comment by user 3 - FAIL - not found",
+					"name": "Patch comment by user 137 - FAIL - not found",
 					"event": [
 						{
 							"listen": "test",
@@ -866,7 +866,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8080/user/3/comments/1000",
+							"raw": "http://localhost:8080/user/137/comments/1000",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -874,7 +874,7 @@
 							"port": "8080",
 							"path": [
 								"user",
-								"3",
+								"137",
 								"comments",
 								"1000"
 							]
@@ -883,7 +883,7 @@
 					"response": []
 				},
 				{
-					"name": "Patch comment by user 3 - OK",
+					"name": "Patch comment by user 137 - OK",
 					"event": [
 						{
 							"listen": "test",
@@ -900,16 +900,16 @@
 									"    pm.expect(jsonData).to.have.property('id');\r",
 									"});\r",
 									"\r",
-									"pm.test(\"Тело должно иметь поле 'eventId' = 1\", function () {\r",
+									"pm.test(\"Тело должно иметь поле 'eventId' = 106\", function () {\r",
 									"    var jsonData = pm.response.json();\r",
 									"    pm.expect(jsonData).to.have.property('eventId');\r",
-									"    pm.expect(jsonData.start, '\"eventId\"  must be \"1\"' + pm.environment.get('eventId') + '\"').to.eql(pm.environment.get('eventId'));\r",
+									"    pm.expect(jsonData.start, '\"eventId\"  must be \"106\"' + pm.environment.get('eventId') + '\"').to.eql(pm.environment.get('eventId'));\r",
 									"});\r",
 									"\r",
-									"pm.test(\"Тело должно иметь поле 'userId' = 3\", function () {\r",
+									"pm.test(\"Тело должно иметь поле 'userId' = 137\", function () {\r",
 									"    var jsonData = pm.response.json();\r",
 									"    pm.expect(jsonData).to.have.property('userId');\r",
-									"    pm.expect(jsonData.start, '\"userId\"  must be \"3\"' + pm.environment.get('userId') + '\"').to.eql(pm.environment.get('userId'));\r",
+									"    pm.expect(jsonData.start, '\"userId\"  must be \"137\"' + pm.environment.get('userId') + '\"').to.eql(pm.environment.get('userId'));\r",
 									"});\r",
 									"\r",
 									"pm.test(\"Тело должно иметь поле 'comment'\", function () {\r",
@@ -940,7 +940,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8080/user/3/comments/2",
+							"raw": "http://localhost:8080/user/137/comments/2",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -948,7 +948,7 @@
 							"port": "8080",
 							"path": [
 								"user",
-								"3",
+								"137",
 								"comments",
 								"2"
 							]
@@ -957,7 +957,7 @@
 					"response": []
 				},
 				{
-					"name": "Add comment to event 2 by user 2 - OK",
+					"name": "Add comment to event 107 by user 136 - OK",
 					"event": [
 						{
 							"listen": "test",
@@ -974,16 +974,16 @@
 									"    pm.expect(jsonData).to.have.property('id');\r",
 									"});\r",
 									"\r",
-									"pm.test(\"Тело должно иметь поле 'eventId' = 1\", function () {\r",
+									"pm.test(\"Тело должно иметь поле 'eventId' = 107\", function () {\r",
 									"    var jsonData = pm.response.json();\r",
 									"    pm.expect(jsonData).to.have.property('eventId');\r",
-									"    pm.expect(jsonData.start, '\"eventId\"  must be \"1\"' + pm.environment.get('eventId') + '\"').to.eql(pm.environment.get('eventId'));\r",
+									"    pm.expect(jsonData.start, '\"eventId\"  must be \"107\"' + pm.environment.get('eventId') + '\"').to.eql(pm.environment.get('eventId'));\r",
 									"});\r",
 									"\r",
-									"pm.test(\"Тело должно иметь поле 'userId' = 2\", function () {\r",
+									"pm.test(\"Тело должно иметь поле 'userId' = 136\", function () {\r",
 									"    var jsonData = pm.response.json();\r",
 									"    pm.expect(jsonData).to.have.property('userId');\r",
-									"    pm.expect(jsonData.start, '\"userId\"  must be \"2\"' + pm.environment.get('userId') + '\"').to.eql(pm.environment.get('userId'));\r",
+									"    pm.expect(jsonData.start, '\"userId\"  must be \"136\"' + pm.environment.get('userId') + '\"').to.eql(pm.environment.get('userId'));\r",
 									"});\r",
 									"\r",
 									"pm.test(\"Тело должно иметь поле 'comment'\", function () {\r",
@@ -1006,7 +1006,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"comment\":\"Comment for event with id = 2.\"\r\n}",
+							"raw": "{\r\n    \"comment\":\"Comment for event with id = 107.\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -1014,7 +1014,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8080/user/2/event/2/comments",
+							"raw": "http://localhost:8080/user/136/event/107/comments",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -1022,9 +1022,9 @@
 							"port": "8080",
 							"path": [
 								"user",
-								"2",
+								"136",
 								"event",
-								"2",
+								"107",
 								"comments"
 							]
 						}
@@ -1032,7 +1032,7 @@
 					"response": []
 				},
 				{
-					"name": "Add comment to event 3 by user 2 - OK",
+					"name": "Add comment to event 108 by user 136 - OK",
 					"event": [
 						{
 							"listen": "test",
@@ -1049,16 +1049,16 @@
 									"    pm.expect(jsonData).to.have.property('id');\r",
 									"});\r",
 									"\r",
-									"pm.test(\"Тело должно иметь поле 'eventId' = 1\", function () {\r",
+									"pm.test(\"Тело должно иметь поле 'eventId' = 108\", function () {\r",
 									"    var jsonData = pm.response.json();\r",
 									"    pm.expect(jsonData).to.have.property('eventId');\r",
-									"    pm.expect(jsonData.start, '\"eventId\"  must be \"1\"' + pm.environment.get('eventId') + '\"').to.eql(pm.environment.get('eventId'));\r",
+									"    pm.expect(jsonData.start, '\"eventId\"  must be \"108\"' + pm.environment.get('eventId') + '\"').to.eql(pm.environment.get('eventId'));\r",
 									"});\r",
 									"\r",
-									"pm.test(\"Тело должно иметь поле 'userId' = 2\", function () {\r",
+									"pm.test(\"Тело должно иметь поле 'userId' = 136\", function () {\r",
 									"    var jsonData = pm.response.json();\r",
 									"    pm.expect(jsonData).to.have.property('userId');\r",
-									"    pm.expect(jsonData.start, '\"userId\"  must be \"2\"' + pm.environment.get('userId') + '\"').to.eql(pm.environment.get('userId'));\r",
+									"    pm.expect(jsonData.start, '\"userId\"  must be \"136\"' + pm.environment.get('userId') + '\"').to.eql(pm.environment.get('userId'));\r",
 									"});\r",
 									"\r",
 									"pm.test(\"Тело должно иметь поле 'comment'\", function () {\r",
@@ -1081,7 +1081,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"comment\":\"Comment for event with id = 3.\"\r\n}",
+							"raw": "{\r\n    \"comment\":\"Comment for event with id = 108.\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -1089,7 +1089,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8080/user/2/event/3/comments",
+							"raw": "http://localhost:8080/user/136/event/108/comments",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -1097,9 +1097,9 @@
 							"port": "8080",
 							"path": [
 								"user",
-								"2",
+								"136",
 								"event",
-								"3",
+								"108",
 								"comments"
 							]
 						}
@@ -1107,7 +1107,7 @@
 					"response": []
 				},
 				{
-					"name": "Add comment to event 4 by user 2 - OK",
+					"name": "Add comment to event 109 by user 136 - OK",
 					"event": [
 						{
 							"listen": "test",
@@ -1124,16 +1124,16 @@
 									"    pm.expect(jsonData).to.have.property('id');\r",
 									"});\r",
 									"\r",
-									"pm.test(\"Тело должно иметь поле 'eventId' = 1\", function () {\r",
+									"pm.test(\"Тело должно иметь поле 'eventId' = 109\", function () {\r",
 									"    var jsonData = pm.response.json();\r",
 									"    pm.expect(jsonData).to.have.property('eventId');\r",
-									"    pm.expect(jsonData.start, '\"eventId\"  must be \"1\"' + pm.environment.get('eventId') + '\"').to.eql(pm.environment.get('eventId'));\r",
+									"    pm.expect(jsonData.start, '\"eventId\"  must be \"109\"' + pm.environment.get('eventId') + '\"').to.eql(pm.environment.get('eventId'));\r",
 									"});\r",
 									"\r",
-									"pm.test(\"Тело должно иметь поле 'userId' = 2\", function () {\r",
+									"pm.test(\"Тело должно иметь поле 'userId' = 136\", function () {\r",
 									"    var jsonData = pm.response.json();\r",
 									"    pm.expect(jsonData).to.have.property('userId');\r",
-									"    pm.expect(jsonData.start, '\"userId\"  must be \"2\"' + pm.environment.get('userId') + '\"').to.eql(pm.environment.get('userId'));\r",
+									"    pm.expect(jsonData.start, '\"userId\"  must be \"136\"' + pm.environment.get('userId') + '\"').to.eql(pm.environment.get('userId'));\r",
 									"});\r",
 									"\r",
 									"pm.test(\"Тело должно иметь поле 'comment'\", function () {\r",
@@ -1156,7 +1156,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"comment\":\"Comment for event with id = 4.\"\r\n}",
+							"raw": "{\r\n    \"comment\":\"Comment for event with id = 109.\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -1164,7 +1164,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8080/user/2/event/4/comments",
+							"raw": "http://localhost:8080/user/136/event/109/comments",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -1172,9 +1172,9 @@
 							"port": "8080",
 							"path": [
 								"user",
-								"2",
+								"136",
 								"event",
-								"4",
+								"109",
 								"comments"
 							]
 						}
@@ -1182,7 +1182,7 @@
 					"response": []
 				},
 				{
-					"name": "Get comment by ID = 2000 by user 3 - FAIL - not found",
+					"name": "Get comment by ID = 2000 by user 137 - FAIL - not found",
 					"event": [
 						{
 							"listen": "test",
@@ -1208,7 +1208,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8080/user/3/comments/2000",
+							"raw": "http://localhost:8080/user/137/comments/2000",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -1216,7 +1216,7 @@
 							"port": "8080",
 							"path": [
 								"user",
-								"3",
+								"137",
 								"comments",
 								"2000"
 							]
@@ -1225,7 +1225,7 @@
 					"response": []
 				},
 				{
-					"name": "Get comment by ID = 2 by user 3 - OK",
+					"name": "Get comment by ID = 2 by user 137 - OK",
 					"event": [
 						{
 							"listen": "test",
@@ -1242,16 +1242,16 @@
 									"    pm.expect(jsonData).to.have.property('id');\r",
 									"});\r",
 									"\r",
-									"pm.test(\"Тело должно иметь поле 'eventId' = 1\", function () {\r",
+									"pm.test(\"Тело должно иметь поле 'eventId' = 106\", function () {\r",
 									"    var jsonData = pm.response.json();\r",
 									"    pm.expect(jsonData).to.have.property('eventId');\r",
-									"    pm.expect(jsonData.start, '\"eventId\"  must be \"1\"' + pm.environment.get('eventId') + '\"').to.eql(pm.environment.get('eventId'));\r",
+									"    pm.expect(jsonData.start, '\"eventId\"  must be \"106\"' + pm.environment.get('eventId') + '\"').to.eql(pm.environment.get('eventId'));\r",
 									"});\r",
 									"\r",
-									"pm.test(\"Тело должно иметь поле 'userId' = 3\", function () {\r",
+									"pm.test(\"Тело должно иметь поле 'userId' = 137\", function () {\r",
 									"    var jsonData = pm.response.json();\r",
 									"    pm.expect(jsonData).to.have.property('userId');\r",
-									"    pm.expect(jsonData.start, '\"userId\"  must be \"3\"' + pm.environment.get('userId') + '\"').to.eql(pm.environment.get('userId'));\r",
+									"    pm.expect(jsonData.start, '\"userId\"  must be \"137\"' + pm.environment.get('userId') + '\"').to.eql(pm.environment.get('userId'));\r",
 									"});\r",
 									"\r",
 									"pm.test(\"Тело должно иметь поле 'comment'\", function () {\r",
@@ -1273,7 +1273,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8080/user/3/comments/2",
+							"raw": "http://localhost:8080/user/137/comments/2",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -1281,7 +1281,7 @@
 							"port": "8080",
 							"path": [
 								"user",
-								"3",
+								"137",
 								"comments",
 								"2"
 							]
@@ -1290,7 +1290,7 @@
 					"response": []
 				},
 				{
-					"name": "Get comment by ID = 2 by user 2 - without param",
+					"name": "Get comment by ID = 2 by user 137 - without param",
 					"event": [
 						{
 							"listen": "test",
@@ -1318,7 +1318,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8080/user/2/comments/",
+							"raw": "http://localhost:8080/user/136/comments/",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -1326,7 +1326,7 @@
 							"port": "8080",
 							"path": [
 								"user",
-								"2",
+								"136",
 								"comments",
 								""
 							]
@@ -1335,7 +1335,7 @@
 					"response": []
 				},
 				{
-					"name": "Get comment by ID = 2 by user 2 - with param (0/2)",
+					"name": "Get comment by ID = 2 by user 136 - with param (0/2)",
 					"event": [
 						{
 							"listen": "test",
@@ -1363,7 +1363,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8080/user/2/comments/?from=0&size=2",
+							"raw": "http://localhost:8080/user/136/comments/?from=0&size=2",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -1371,7 +1371,7 @@
 							"port": "8080",
 							"path": [
 								"user",
-								"2",
+								"136",
 								"comments",
 								""
 							],
@@ -1390,7 +1390,7 @@
 					"response": []
 				},
 				{
-					"name": "Get comment by ID = 2 by user 2 - with param (1/3)",
+					"name": "Get comment by ID = 2 by user 136 - with param (1/3)",
 					"event": [
 						{
 							"listen": "test",
@@ -1418,7 +1418,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8080/user/2/comments/?from=1&size=3",
+							"raw": "http://localhost:8080/user/136/comments/?from=1&size=3",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -1426,7 +1426,7 @@
 							"port": "8080",
 							"path": [
 								"user",
-								"2",
+								"136",
 								"comments",
 								""
 							],
@@ -1445,7 +1445,7 @@
 					"response": []
 				},
 				{
-					"name": "Delete comment by user 3 - FAIL - not owner",
+					"name": "Delete comment by user 137 - FAIL - not owner",
 					"event": [
 						{
 							"listen": "test",
@@ -1471,7 +1471,7 @@
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8080/user/3/comments/1/",
+							"raw": "http://localhost:8080/user/137/comments/1/",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -1479,7 +1479,7 @@
 							"port": "8080",
 							"path": [
 								"user",
-								"3",
+								"137",
 								"comments",
 								"1",
 								""
@@ -1489,7 +1489,7 @@
 					"response": []
 				},
 				{
-					"name": "Delete comment by user 3 - FAIL - not found",
+					"name": "Delete comment by user 137 - FAIL - not found",
 					"event": [
 						{
 							"listen": "test",
@@ -1524,7 +1524,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8080/user/3/comments/1000",
+							"raw": "http://localhost:8080/user/137/comments/1000",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -1532,7 +1532,7 @@
 							"port": "8080",
 							"path": [
 								"user",
-								"3",
+								"137",
 								"comments",
 								"1000"
 							]
@@ -1541,7 +1541,7 @@
 					"response": []
 				},
 				{
-					"name": "Delete comment by user 2 - OK",
+					"name": "Delete comment by user 136 - OK",
 					"event": [
 						{
 							"listen": "test",
@@ -1568,7 +1568,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8080/user/2/comments/1/",
+							"raw": "http://localhost:8080/user/135/comments/1/",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -1576,7 +1576,7 @@
 							"port": "8080",
 							"path": [
 								"user",
-								"2",
+								"135",
 								"comments",
 								"1",
 								""
@@ -1586,7 +1586,7 @@
 					"response": []
 				},
 				{
-					"name": "Delete comment by user 3 - OK",
+					"name": "Delete comment by user 136 - OK",
 					"event": [
 						{
 							"listen": "test",
@@ -1613,7 +1613,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8080/user/3/comments/2/",
+							"raw": "http://localhost:8080/user/135/comments/2/",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -1621,7 +1621,7 @@
 							"port": "8080",
 							"path": [
 								"user",
-								"3",
+								"135",
 								"comments",
 								"2",
 								""
@@ -1636,7 +1636,7 @@
 			"name": "Public Part",
 			"item": [
 				{
-					"name": "Get comments to event 1 = 0",
+					"name": "Get comments to event 106 = 0",
 					"event": [
 						{
 							"listen": "test",
@@ -1664,7 +1664,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8080/event/1/comments",
+							"raw": "http://localhost:8080/event/106/comments",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -1672,7 +1672,7 @@
 							"port": "8080",
 							"path": [
 								"event",
-								"1",
+								"106",
 								"comments"
 							]
 						}
@@ -1680,7 +1680,7 @@
 					"response": []
 				},
 				{
-					"name": "Add comment to event 1 by user 2",
+					"name": "Add comment to event 106 by user 136",
 					"event": [
 						{
 							"listen": "test",
@@ -1697,16 +1697,16 @@
 									"    pm.expect(jsonData).to.have.property('id');\r",
 									"});\r",
 									"\r",
-									"pm.test(\"Тело должно иметь поле 'eventId' = 1\", function () {\r",
+									"pm.test(\"Тело должно иметь поле 'eventId' = 106\", function () {\r",
 									"    var jsonData = pm.response.json();\r",
 									"    pm.expect(jsonData).to.have.property('eventId');\r",
-									"    pm.expect(jsonData.start, '\"eventId\"  must be \"1\"' + pm.environment.get('eventId') + '\"').to.eql(pm.environment.get('eventId'));\r",
+									"    pm.expect(jsonData.start, '\"eventId\"  must be \"106\"' + pm.environment.get('eventId') + '\"').to.eql(pm.environment.get('eventId'));\r",
 									"});\r",
 									"\r",
-									"pm.test(\"Тело должно иметь поле 'userId' = 2\", function () {\r",
+									"pm.test(\"Тело должно иметь поле 'userId' = 136\", function () {\r",
 									"    var jsonData = pm.response.json();\r",
 									"    pm.expect(jsonData).to.have.property('userId');\r",
-									"    pm.expect(jsonData.start, '\"userId\"  must be \"2\"' + pm.environment.get('userId') + '\"').to.eql(pm.environment.get('userId'));\r",
+									"    pm.expect(jsonData.start, '\"userId\"  must be \"136\"' + pm.environment.get('userId') + '\"').to.eql(pm.environment.get('userId'));\r",
 									"});\r",
 									"\r",
 									"pm.test(\"Тело должно иметь поле 'comment'\", function () {\r",
@@ -1737,7 +1737,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8080/user/2/event/1/comments",
+							"raw": "http://localhost:8080/user/136/event/106/comments",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -1745,9 +1745,9 @@
 							"port": "8080",
 							"path": [
 								"user",
-								"2",
+								"136",
 								"event",
-								"1",
+								"106",
 								"comments"
 							]
 						}
@@ -1755,7 +1755,7 @@
 					"response": []
 				},
 				{
-					"name": "Add comment to event 1 by user 3 Copy",
+					"name": "Add comment to event 106 by user 137 Copy",
 					"event": [
 						{
 							"listen": "test",
@@ -1772,16 +1772,16 @@
 									"    pm.expect(jsonData).to.have.property('id');\r",
 									"});\r",
 									"\r",
-									"pm.test(\"Тело должно иметь поле 'eventId' = 1\", function () {\r",
+									"pm.test(\"Тело должно иметь поле 'eventId' = 106\", function () {\r",
 									"    var jsonData = pm.response.json();\r",
 									"    pm.expect(jsonData).to.have.property('eventId');\r",
-									"    pm.expect(jsonData.start, '\"eventId\"  must be \"1\"' + pm.environment.get('eventId') + '\"').to.eql(pm.environment.get('eventId'));\r",
+									"    pm.expect(jsonData.start, '\"eventId\"  must be \"106\"' + pm.environment.get('eventId') + '\"').to.eql(pm.environment.get('eventId'));\r",
 									"});\r",
 									"\r",
-									"pm.test(\"Тело должно иметь поле 'userId' = 2\", function () {\r",
+									"pm.test(\"Тело должно иметь поле 'userId' = 137\", function () {\r",
 									"    var jsonData = pm.response.json();\r",
 									"    pm.expect(jsonData).to.have.property('userId');\r",
-									"    pm.expect(jsonData.start, '\"userId\"  must be \"2\"' + pm.environment.get('userId') + '\"').to.eql(pm.environment.get('userId'));\r",
+									"    pm.expect(jsonData.start, '\"userId\"  must be \"137\"' + pm.environment.get('userId') + '\"').to.eql(pm.environment.get('userId'));\r",
 									"});\r",
 									"\r",
 									"pm.test(\"Тело должно иметь поле 'comment'\", function () {\r",
@@ -1812,7 +1812,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8080/user/3/event/1/comments",
+							"raw": "http://localhost:8080/user/137/event/106/comments",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -1820,9 +1820,9 @@
 							"port": "8080",
 							"path": [
 								"user",
-								"3",
+								"137",
 								"event",
-								"1",
+								"106",
 								"comments"
 							]
 						}
@@ -1830,12 +1830,12 @@
 					"response": []
 				},
 				{
-					"name": "Add request from user 4 to 1 event",
+					"name": "Add request from user 138 to 106 event",
 					"request": {
 						"method": "POST",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8080/users/4/requests?eventId=1",
+							"raw": "http://localhost:8080/users/138/requests?eventId=106",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -1843,13 +1843,13 @@
 							"port": "8080",
 							"path": [
 								"users",
-								"4",
+								"138",
 								"requests"
 							],
 							"query": [
 								{
 									"key": "eventId",
-									"value": "1"
+									"value": "106"
 								}
 							]
 						}
@@ -1857,7 +1857,7 @@
 					"response": []
 				},
 				{
-					"name": "Add comment to event 1 by user 4",
+					"name": "Add comment to event 106 by user 138",
 					"event": [
 						{
 							"listen": "test",
@@ -1874,16 +1874,16 @@
 									"    pm.expect(jsonData).to.have.property('id');\r",
 									"});\r",
 									"\r",
-									"pm.test(\"Тело должно иметь поле 'eventId' = 1\", function () {\r",
+									"pm.test(\"Тело должно иметь поле 'eventId' = 106\", function () {\r",
 									"    var jsonData = pm.response.json();\r",
 									"    pm.expect(jsonData).to.have.property('eventId');\r",
-									"    pm.expect(jsonData.start, '\"eventId\"  must be \"1\"' + pm.environment.get('eventId') + '\"').to.eql(pm.environment.get('eventId'));\r",
+									"    pm.expect(jsonData.start, '\"eventId\"  must be \"106\"' + pm.environment.get('eventId') + '\"').to.eql(pm.environment.get('eventId'));\r",
 									"});\r",
 									"\r",
-									"pm.test(\"Тело должно иметь поле 'userId' = 2\", function () {\r",
+									"pm.test(\"Тело должно иметь поле 'userId' = 137\", function () {\r",
 									"    var jsonData = pm.response.json();\r",
 									"    pm.expect(jsonData).to.have.property('userId');\r",
-									"    pm.expect(jsonData.start, '\"userId\"  must be \"2\"' + pm.environment.get('userId') + '\"').to.eql(pm.environment.get('userId'));\r",
+									"    pm.expect(jsonData.start, '\"userId\"  must be \"137\"' + pm.environment.get('userId') + '\"').to.eql(pm.environment.get('userId'));\r",
 									"});\r",
 									"\r",
 									"pm.test(\"Тело должно иметь поле 'comment'\", function () {\r",
@@ -1914,7 +1914,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8080/user/4/event/1/comments",
+							"raw": "http://localhost:8080/user/138/event/106/comments",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -1922,9 +1922,9 @@
 							"port": "8080",
 							"path": [
 								"user",
-								"4",
+								"138",
 								"event",
-								"1",
+								"106",
 								"comments"
 							]
 						}
@@ -1932,7 +1932,7 @@
 					"response": []
 				},
 				{
-					"name": "Get comments to event 1 = 3",
+					"name": "Get comments to event 106 = 3",
 					"event": [
 						{
 							"listen": "test",
@@ -1960,7 +1960,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8080/event/1/comments",
+							"raw": "http://localhost:8080/event/106/comments",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -1968,7 +1968,7 @@
 							"port": "8080",
 							"path": [
 								"event",
-								"1",
+								"106",
 								"comments"
 							]
 						}
@@ -2130,7 +2130,7 @@
 					"response": []
 				},
 				{
-					"name": "Get comment by admin param: event 1",
+					"name": "Get comment by admin param: event 106",
 					"event": [
 						{
 							"listen": "test",
@@ -2153,19 +2153,19 @@
 									"pm.test(\"Test comment[0] 'eventId' field\", function () {\r",
 									"    var jsonData = pm.response.json();\r",
 									"    pm.expect(jsonData[0]).to.have.property('eventId');\r",
-									"    pm.expect(jsonData[0].eventId, '\"eventId\" must be 1').to.eql(1);\r",
+									"    pm.expect(jsonData[0].eventId, '\"eventId\" must be 106').to.eql(106);\r",
 									"});\r",
 									"\r",
 									"pm.test(\"Test comment[1] 'eventId' field\", function () {\r",
 									"    var jsonData = pm.response.json();\r",
 									"    pm.expect(jsonData[1]).to.have.property('eventId');\r",
-									"    pm.expect(jsonData[1].eventId, '\"eventId\" must be 1').to.eql(1);\r",
+									"    pm.expect(jsonData[1].eventId, '\"eventId\" must be 106').to.eql(106);\r",
 									"});\r",
 									"\r",
 									"pm.test(\"Test comment[2] 'eventId' field\", function () {\r",
 									"    var jsonData = pm.response.json();\r",
 									"    pm.expect(jsonData[2]).to.have.property('eventId');\r",
-									"    pm.expect(jsonData[2].eventId, '\"eventId\" must be 1').to.eql(1);\r",
+									"    pm.expect(jsonData[2].eventId, '\"eventId\" must be 106').to.eql(106);\r",
 									"});"
 								],
 								"type": "text/javascript"
@@ -2176,7 +2176,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8080/admin/comments?eventId=1",
+							"raw": "http://localhost:8080/admin/comments?eventId=106",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -2189,7 +2189,7 @@
 							"query": [
 								{
 									"key": "eventId",
-									"value": "1"
+									"value": "106"
 								}
 							]
 						}
@@ -2197,7 +2197,7 @@
 					"response": []
 				},
 				{
-					"name": "Get comment by admin param: user 2",
+					"name": "Get comment by admin param: user 136",
 					"event": [
 						{
 							"listen": "test",
@@ -2220,25 +2220,25 @@
 									"pm.test(\"Test comment[0] 'userId' field\", function () {\r",
 									"    var jsonData = pm.response.json();\r",
 									"    pm.expect(jsonData[0]).to.have.property('userId');\r",
-									"    pm.expect(jsonData[0].userId, '\"userId\" must be 2').to.eql(2);\r",
+									"    pm.expect(jsonData[0].userId, '\"userId\" must be 136').to.eql(136);\r",
 									"});\r",
 									"\r",
 									"pm.test(\"Test comment[1] 'userId' field\", function () {\r",
 									"    var jsonData = pm.response.json();\r",
 									"    pm.expect(jsonData[1]).to.have.property('userId');\r",
-									"    pm.expect(jsonData[1].userId, '\"userId\" must be 2').to.eql(2);\r",
+									"    pm.expect(jsonData[1].userId, '\"userId\" must be 136').to.eql(136);\r",
 									"});\r",
 									"\r",
 									"pm.test(\"Test comment[2] 'userId' field\", function () {\r",
 									"    var jsonData = pm.response.json();\r",
 									"    pm.expect(jsonData[2]).to.have.property('userId');\r",
-									"    pm.expect(jsonData[2].userId, '\"userId\" must be 2').to.eql(2);\r",
+									"    pm.expect(jsonData[2].userId, '\"userId\" must be 136').to.eql(136);\r",
 									"});\r",
 									"\r",
 									"pm.test(\"Test comment[3] 'userId' field\", function () {\r",
 									"    var jsonData = pm.response.json();\r",
 									"    pm.expect(jsonData[3]).to.have.property('userId');\r",
-									"    pm.expect(jsonData[3].userId, '\"userId\" must be 2').to.eql(2);\r",
+									"    pm.expect(jsonData[3].userId, '\"userId\" must be 136').to.eql(136);\r",
 									"});"
 								],
 								"type": "text/javascript"
@@ -2249,7 +2249,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8080/admin/comments?userId=2",
+							"raw": "http://localhost:8080/admin/comments?userId=136",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -2262,7 +2262,7 @@
 							"query": [
 								{
 									"key": "userId",
-									"value": "2"
+									"value": "136"
 								}
 							]
 						}
@@ -2270,7 +2270,7 @@
 					"response": []
 				},
 				{
-					"name": "Get comment by admin param: user 2 and event 1",
+					"name": "Get comment by admin param: user 136 and event 106",
 					"event": [
 						{
 							"listen": "test",
@@ -2293,9 +2293,9 @@
 									"pm.test(\"Test comment[0] 'userId' field\", function () {\r",
 									"    var jsonData = pm.response.json();\r",
 									"    pm.expect(jsonData[0]).to.have.property('userId');\r",
-									"    pm.expect(jsonData[0].userId, '\"userId\" must be 2').to.eql(2);\r",
+									"    pm.expect(jsonData[0].userId, '\"userId\" must be 136').to.eql(136);\r",
 									"    pm.expect(jsonData[0]).to.have.property('eventId');\r",
-									"    pm.expect(jsonData[0].eventId, '\"eventId\" must be 1').to.eql(1);\r",
+									"    pm.expect(jsonData[0].eventId, '\"eventId\" must be 106').to.eql(106);\r",
 									"});"
 								],
 								"type": "text/javascript"
@@ -2306,7 +2306,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8080/admin/comments?userId=2&eventId=1",
+							"raw": "http://localhost:8080/admin/comments?userId=136&eventId=106",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -2319,11 +2319,11 @@
 							"query": [
 								{
 									"key": "userId",
-									"value": "2"
+									"value": "136"
 								},
 								{
 									"key": "eventId",
-									"value": "1"
+									"value": "106"
 								}
 							]
 						}
