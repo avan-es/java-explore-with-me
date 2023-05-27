@@ -14,9 +14,10 @@ import java.util.List;
 @Slf4j
 @RequiredArgsConstructor
 @Transactional(readOnly = true)
-public class CommentPubServiceImpl implements CommentPubService{
+public class CommentPubServiceImpl implements CommentPubService {
 
     private final CommentRepository commentRepository;
+
     @Override
     public List<CommentDto> getCommentByEventId(Long eventId) {
         return CommentMapper.INSTANT.toCommentsDto(

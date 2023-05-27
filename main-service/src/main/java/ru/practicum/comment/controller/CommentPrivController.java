@@ -63,7 +63,7 @@ public class CommentPrivController {
             @Positive @PathVariable Long userId,
             @PositiveOrZero @RequestParam(value = "from", defaultValue = "0") Integer from,
             @PositiveOrZero @RequestParam(value = "size", defaultValue = "20") Integer size) {
-        return commentPrivService.getAllComments(userId, PageRequest.of(from/size, size));
+        return commentPrivService.getAllComments(userId, PageRequest.of(from / size, size));
     }
 
 }

@@ -24,7 +24,7 @@ import java.util.List;
 @Slf4j
 @RequiredArgsConstructor
 @Transactional(readOnly = true)
-public class CommentPrivServiceImpl implements CommentPrivService{
+public class CommentPrivServiceImpl implements CommentPrivService {
 
     private final CommentRepository commentRepository;
 
@@ -54,7 +54,7 @@ public class CommentPrivServiceImpl implements CommentPrivService{
     public CommentDto updateComment(Long userId, Long commentId, UpdateCommentDto updateCommentDto) {
         log.info("Пользователь с ID = {} обновляет комментарий с ID = {}.", userId, commentId);
         commentUtils.checkCommentIsPresent(commentId);
-        usersService.isUserPresent(userId);
+        usersService.checkIsUserPresent(userId);
         Comment commentForUpdate = commentUtils.getCommentById(commentId);
         commentUtils.checkIfUserIsOwnerComment(commentForUpdate, userId);
         commentForUpdate.setComment(updateCommentDto.getComment());
@@ -68,7 +68,7 @@ public class CommentPrivServiceImpl implements CommentPrivService{
     public void deleteComment(Long userId, Long commentId) {
         log.info("Пользователь с ID = {} удаляет комментарий с ID = {}.", userId, commentId);
         commentUtils.checkCommentIsPresent(commentId);
-        usersService.isUserPresent(userId);
+        usersService.checkIsUserPresent(userId);
         commentUtils.checkIfUserIsOwnerComment(commentUtils.getCommentById(commentId), userId);
         commentRepository.deleteById(commentId);
         log.debug("Пользователь с ID = {} удалил комментарий с ID = {}.", userId, commentId);
@@ -78,7 +78,7 @@ public class CommentPrivServiceImpl implements CommentPrivService{
     public CommentDto getCommentById(Long userId, Long commentId) {
         log.info("Пользователь с ID = {} выгружает свой комментарий с ID = {}.", userId, commentId);
         commentUtils.checkCommentIsPresent(commentId);
-        usersService.isUserPresent(userId);
+        usersService.checkIsUserPresent(userId);
         return CommentMapper.INSTANT.toCommentDto(
                 commentUtils.getCommentById(commentId));
     }
@@ -86,7 +86,7 @@ public class CommentPrivServiceImpl implements CommentPrivService{
     @Override
     public List<CommentDto> getAllComments(Long userId, PageRequest pageable) {
         log.info("Пользователь с ID = {} выгружает свои комментарии.", userId);
-        usersService.isUserPresent(userId);
+        usersService.checkIsUserPresent(userId);
         Page<Comment> pageComment = commentRepository.findAllByUserId(userId, pageable);
         List<Comment> comments = pageComment.getContent();
         return CommentMapper.INSTANT.toCommentsDto(comments);

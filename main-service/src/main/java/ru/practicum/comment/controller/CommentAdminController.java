@@ -40,7 +40,7 @@ public class CommentAdminController {
             @Positive @RequestParam(value = "eventId", required = false) Long eventId,
             @PositiveOrZero @RequestParam(value = "from", defaultValue = "0") Integer from,
             @PositiveOrZero @RequestParam(value = "size", defaultValue = "20") Integer size) {
-        return commentAdminService.getComments(userId, eventId, PageRequest.of(from/size, size));
+        return commentAdminService.getComments(userId, eventId, PageRequest.of(from / size, size));
     }
 
 }
