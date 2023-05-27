@@ -1514,15 +1514,6 @@
 					"request": {
 						"method": "DELETE",
 						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"comment\":\"Обновленный комментарий!\"\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
 						"url": {
 							"raw": "http://localhost:8080/user/137/comments/1000",
 							"protocol": "http",
@@ -1558,17 +1549,8 @@
 					"request": {
 						"method": "DELETE",
 						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"comment\":\"Оки-доки!!\"\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
 						"url": {
-							"raw": "http://localhost:8080/user/135/comments/1/",
+							"raw": "http://localhost:8080/user/136/comments/1/",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -1576,7 +1558,7 @@
 							"port": "8080",
 							"path": [
 								"user",
-								"135",
+								"136",
 								"comments",
 								"1",
 								""
@@ -1586,7 +1568,7 @@
 					"response": []
 				},
 				{
-					"name": "Delete comment by user 136 - OK",
+					"name": "Delete comment by user 137 - OK",
 					"event": [
 						{
 							"listen": "test",
@@ -1613,7 +1595,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8080/user/135/comments/2/",
+							"raw": "http://localhost:8080/user/137/comments/2/",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -1621,7 +1603,7 @@
 							"port": "8080",
 							"path": [
 								"user",
-								"135",
+								"137",
 								"comments",
 								"2",
 								""
