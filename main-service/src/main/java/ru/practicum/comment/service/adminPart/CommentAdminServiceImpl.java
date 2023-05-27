@@ -50,8 +50,6 @@ public class CommentAdminServiceImpl implements CommentAdminService {
     @Override
     public List<CommentDto> getComments(Long userId, Long eventId, Pageable pageable) {
         log.info("Администратор выгружает комментарий по параметрам: userId = {}, eventId = {}.", userId, eventId);
-        usersService.checkIsUserPresent(userId);
-        eventUtils.checkEventIsPresent(eventId);
         List<Comment> comments;
         if (userId == null && eventId == null) {
             comments = commentRepository.findAll(pageable).getContent();
