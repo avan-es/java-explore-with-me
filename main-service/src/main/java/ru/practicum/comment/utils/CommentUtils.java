@@ -55,11 +55,4 @@ public class CommentUtils {
         }
     }
 
-    public void checkIfUserAlreadyPostComment(Long userId, Long eventId) {
-        Comment comment = commentRepository.findFirstByUserIdAndEventId(userId, eventId);
-        if (comment != null) {
-            throw new ConflictException("Вы уже оставляли комментарий к этому мероприятию. Можете обновить его.");
-        }
-    }
-
 }

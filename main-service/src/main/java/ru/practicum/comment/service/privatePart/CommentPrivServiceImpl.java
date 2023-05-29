@@ -41,7 +41,6 @@ public class CommentPrivServiceImpl implements CommentPrivService {
         Event event = eventUtils.getEventById(eventId);
         User user = usersService.getUserById(userId);
         commentUtils.checkCanUserAddComment(user, event);
-        commentUtils.checkIfUserAlreadyPostComment(userId, eventId);
         newCommentDto.setUserId(userId);
         newCommentDto.setEventId(eventId);
         Comment comment = commentRepository.save(CommentMapper.INSTANT.toComment(newCommentDto, user, event));
