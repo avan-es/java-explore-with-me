@@ -8,12 +8,16 @@
 # Структура
 
 Проект состоит из двух модулей: основной и сервис статистики.
-![Схема связи модулей](https://github.com/avan-es/java-explore-with-me/assets/83888190/59a2bba5-3513-497a-a6bc-a46903fcbe25)
+
+![01_Structure](https://github.com/avan-es/java-explore-with-me/assets/83888190/22f13916-77b5-4f90-9b5d-62dbf9799f7a)
 
 ## Сервис статистики
 
 Функционал сервиса прост и ограничен: сохранение информации о том, что к эндпоинту был запрос; получение статистики по посещениям.
-Сервис реализован в соответствии со пецификацией, доступной по [ссылке](https://app.swaggerhub.com/apis/AVANESIANBAG/stat-service_api/v0#/StatsController/getStats).
+Сервис реализован в соответствии со пецификацией (полная спецификация доступна по [ссылке](https://app.swaggerhub.com/apis/AVANESIANBAG/stat-service_api/v0#/StatsController/getStats)).
 
-Основной сервис
+![02_StatsController_API](https://github.com/avan-es/java-explore-with-me/assets/83888190/acc0e5af-1fb0-4e60-829f-0d78b4a63458)
+
+
+## Основной сервис
 
