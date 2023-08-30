@@ -8,7 +8,7 @@
 # Структура
 
 Проект состоит из двух модулей: основной и сервис статистики.
-![Схема связи модулей](https://disk.yandex.ru/i/G7OpwrETVTtItQ)
+![Схема связи модулей](https://github.com/avan-es/java-explore-with-me/assets/83888190/59a2bba5-3513-497a-a6bc-a46903fcbe25)
 
 ## Сервис статистики
 
@@ -16,3 +16,4 @@
 Сервис реализован в соответствии со пецификацией, доступной по [ссылке](https://app.swaggerhub.com/apis/AVANESIANBAG/stat-service_api/v0#/StatsController/getStats).
 
 Основной сервис
+
