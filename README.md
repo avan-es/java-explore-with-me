@@ -68,4 +68,18 @@
   ## Схема базы данных
 ![exploreWithMeMainDb - public](https://github.com/avan-es/java-explore-with-me/assets/83888190/29b7c75a-24cd-4cad-ba46-a528c39873ea)
 
+## Запуск программы
+
+Для запуска приложения потребуется ***IntelliJ IDEA, Docker, Maven.***
+
+Алгоритм:
+- Склонировать приложение в свой репозиторий или скачать на компьютер;
+- Открыть проект в ***IntelliJ IDEA***;
+- Выполнить ***mvn clean package***;
+- Собрать контейнеры из файта ***docker-compose.yml***
+
+### Для тестирования подготовлены файлы коллекций Postman
+[Test Explore With Me - Main service.postman_collection.json](https://github.com/avan-es/java-explore-with-me/blob/main/postman/Test%20Explore%20With%20Me%20-%20Main%20service.postman_collection.json)
+
+[Test Explore With Me - Stat service.postman_collection.json](https://github.com/avan-es/java-explore-with-me/blob/main/postman/Test%20Explore%20With%20Me%20-%20Stat%20service.postman_collection.json)
   
