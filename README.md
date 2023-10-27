@@ -57,7 +57,7 @@
 - Private;
 - Public.
 
-Сервис реализован в соответствии со пецификацией (полная спецификация доступна по [ссылке](https://app.swaggerhub.com/apis/AVANESIANBAG/explore-with_me_api_server/1.0)).
+Сервис реализован в соответствии со спецификацией (полная спецификация доступна по [ссылке](https://app.swaggerhub.com/apis/AVANESIANBAG/explore-with_me_api_server/1.0)).
 
   |Модель/Уровень доступа|Admin|Private|Public|
   |:---:|:---:|:---:|:---:|
