@@ -38,7 +38,7 @@
 ## Сервис статистики
 
 Функционал сервиса прост и ограничен: сохранение информации о том, что к эндпоинту был запрос; получение статистики по посещениям.
-Сервис реализован в соответствии со пецификацией (полная спецификация доступна по [ссылке](https://app.swaggerhub.com/apis/AVANESIANBAG/stat-service_api/v0#/StatsController/getStats)).
+Сервис реализован в соответствии со спецификацией (полная спецификация доступна по [ссылке](https://app.swaggerhub.com/apis/AVANESIANBAG/stat-service_api/v0#/StatsController/getStats)).
 
 ![02_StatsController_API](https://github.com/avan-es/java-explore-with-me/assets/83888190/668447ed-8f6e-4be8-b62d-ca40702dcdc7)
 
