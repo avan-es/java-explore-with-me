@@ -22,8 +22,9 @@
 
 Проект состоит из двух модулей: основной и сервис статистики.
 
-![01_Structure](https://github.com/avan-es/java-explore-with-me/assets/83888190/ef48298f-9ccc-44b9-8a92-aa9999db06e2)
-
+<div align="center">
+    <img src="https://github.com/avan-es/java-explore-with-me/assets/83888190/ef48298f-9ccc-44b9-8a92-aa9999db06e2"/>
+</div>
 
 ### Ключевые требования
 
@@ -40,8 +41,9 @@
 Функционал сервиса прост и ограничен: сохранение информации о том, что к эндпоинту был запрос; получение статистики по посещениям.
 Сервис реализован в соответствии со спецификацией (полная спецификация доступна по [ссылке](https://app.swaggerhub.com/apis/AVANESIANBAG/stat-service_api/v0#/StatsController/getStats)).
 
-![02_StatsController_API](https://github.com/avan-es/java-explore-with-me/assets/83888190/668447ed-8f6e-4be8-b62d-ca40702dcdc7)
-
+<div align="center">
+    <img src="https://github.com/avan-es/java-explore-with-me/assets/83888190/668447ed-8f6e-4be8-b62d-ca40702dcdc7"/>
+</div>
 
 ## Основной сервис
 
@@ -68,7 +70,9 @@
   |Пользователи|✅ Получение информации о пользователях;<br />✅ Добавление нового пользователя; <br />✅ Удаление пользователя.|⛔|⛔|
 
   ## Схема базы данных
-![exploreWithMeMainDb - public](https://github.com/avan-es/java-explore-with-me/assets/83888190/d916e717-67d4-4fb7-8b33-59fb0ba30d38)
+  <div align="center">
+    <img src="https://github.com/avan-es/java-explore-with-me/assets/83888190/d916e717-67d4-4fb7-8b33-59fb0ba30d38"/>
+  </div>
 
 ## Запуск программы
 
