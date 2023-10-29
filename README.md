@@ -82,7 +82,7 @@
 - Склонировать приложение в свой репозиторий или скачать на компьютер;
 - Открыть проект в ***IntelliJ IDEA***;
 - Выполнить ***mvn clean package***;
-- Собрать контейнеры из файта ***docker-compose.yml***
+- Собрать контейнеры из файла ***docker-compose.yml***
 
 ### Для тестирования подготовлены файлы коллекций Postman
 [Test Explore With Me - Main service.postman_collection.json](https://github.com/avan-es/java-explore-with-me/blob/main/postman/Test%20Explore%20With%20Me%20-%20Main%20service.postman_collection.json)
