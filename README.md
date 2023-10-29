@@ -16,6 +16,7 @@
 - Querydsl APT
 - Postman
 - IntelliJ IDEA
+- Swagger
 - DBeaver
 
 # Структура
